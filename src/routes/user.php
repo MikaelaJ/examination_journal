@@ -1,0 +1,35 @@
+<?php
+
+return function ($app) {
+  // Register auth middleware
+  $auth = require __DIR__ . '/../middlewares/auth.php'; // Kod som körs innan och efter en route-funktion körs.
+
+  // Basic protected GET route 
+  // Hämtar en specifik användare
+  $app->get('/user/{id}', function ($request, $response, $args) {
+    $userID = $args['id'];
+    $user = new User($this->db);
+
+    return $response->withJson($user->getUserByID($userID));
+  })->add($auth);
+
+  // Hämtar alla användare
+  $app->get('/users', function ($request, $response) {
+    $user = new User($this->db);
+  
+    return $response->withJson($user->getAllUsers());
+  });
+  
+  $app->post('/newuser', function ($request, $response, $args) {
+    $dataBody = $request->getParsedBody();
+    $user = new User($this->db);
+    $user->registerNewUser($dataBody['username'], $dataBody['password']);
+    return $response->withJson([
+      'success' => true
+    ]);
+  });
+
+
+
+};
+
