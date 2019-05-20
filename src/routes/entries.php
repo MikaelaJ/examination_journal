@@ -31,7 +31,7 @@ return function ($app) {
 
     // Lägga in en ny entry
     $app->post('/createEntry', function ($request, $response, $args) {
-        $dataBody = $request->getParsedBody();
+        $dataBody = $request->getParsedBody(); // getParsedData() funkar endast på post
         $entry = new Entry($this->db);
         $entry->createEntry($dataBody['title'], $dataBody['content'], $dataBody['userID']);
         return $response->withJson([
@@ -40,10 +40,11 @@ return function ($app) {
     })->add($auth);
 
     // Delete Entry
-    $app->delete('/deleteEntry', function ($request, $response, $args) {
-        $dataBody = $request->getParsedBody();
+    $app->delete('/entry/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
         $entry = new Entry($this->db);
-        $entry->deleteEntry($dataBody['entryID']);
+
+        $entry->deleteEntry($entryID);
         return $response->withJson([
             'success' => true
         ]);
