@@ -37,6 +37,14 @@ class Entry extends Mapper
             ]);
        /*  } */
     }
+    public function deleteEntry($entryID) {
+        /* if(isset($_GET['id'])) { */
+            $statement = $this->db->prepare("DELETE FROM entries WHERE entryID = :entryID");
+            $statement->execute([
+                'entryID' => $entryID
+            ]);
+        /* } */
+    }
 
 };
 

@@ -38,4 +38,14 @@ return function ($app) {
             'success' => true
         ]);
     })->add($auth);
+
+    // Delete Entry
+    $app->delete('/deleteEntry', function ($request, $response, $args) {
+        $dataBody = $request->getParsedBody();
+        $entry = new Entry($this->db);
+        $entry->deleteEntry($dataBody['entryID']);
+        return $response->withJson([
+            'success' => true
+        ]);
+    })/* ->add($auth); */;
 };
