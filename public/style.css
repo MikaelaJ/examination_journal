@@ -3,8 +3,23 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+.container {
+  border: 2px solid black;
+  max-width: 1000px;
+  margin: 100px auto 0px auto;
+}
+
+header {
+  border-bottom: 1px solid;
+}
+
+header h1 {
+  text-align: center;
+}
+
 main {
   max-width: 40em;
+  padding: 1%;
 }
 
 h1 {

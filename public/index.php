@@ -13,7 +13,7 @@
   $dependencies = require __DIR__ . '/../src/container.php';
   $dependencies($app);
 
-  // Register routes
+  // Register all our routes
   $login = require __DIR__ . '/../src/routes/login.php';
   $login($app);
 

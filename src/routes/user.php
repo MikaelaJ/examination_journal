@@ -22,7 +22,7 @@ return function ($app) {
   
   $app->post('/newuser', function ($request, $response, $args) {
     $dataBody = $request->getParsedBody();
-    $user = new User($this->db);
+    $user = new User($this->db); // Den vet vad det är för att den autoladdas i 
     $user->registerNewUser($dataBody['username'], $dataBody['password']);
     return $response->withJson([
       'success' => true
