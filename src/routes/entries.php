@@ -29,11 +29,13 @@ return function ($app) {
         return $response->withJson($entry->getAllEntriesByUser($userID));
     });
 
-
-
-
-
-
-
-    $userID = $args['id'];
+    // Lägga in en ny entry
+    $app->post('/createEntry', function ($request, $response, $args) {
+        $dataBody = $request->getParsedBody();
+        $entry = new Entry($this->db);
+        $entry->createEntry($dataBody['title'], $dataBody['content'], $dataBody['userID']);
+        return $response->withJson([
+            'success' => true
+        ]);
+    })->add($auth);
 };

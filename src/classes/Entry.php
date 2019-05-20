@@ -24,5 +24,19 @@ class Entry extends Mapper
         ]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Skapa nytt inlägg
+    public function createEntry($title, $content, $userID)
+    {
+        /* if (isset($_GET['action']) && $_GET['action'] == 'commitEntry') { */
+            $statement = $this->db->prepare("INSERT INTO entries(title, content, createdAt, userID) VALUES (:title, :content, NOW(), :userID)");
+            $statement->execute([
+                'title' => $title,
+                'content' => $content,
+                'userID' => $userID /* $_SESSION['userID'] */
+            ]);
+       /*  } */
+    }
+
 };
 
