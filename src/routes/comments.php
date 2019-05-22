@@ -34,4 +34,12 @@ return function ($app) {
             'success' => true
         ]);
     });
+
+    //Hämta en kommentarer till varje inlägg
+    //När man läser hela inlägget ska man också få en lista på alla kommentarer till inlägget.
+    $app->get('/comments/all/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
+        $comment = new Comment($this->db);
+        return $response->withJson($comment->getAllComments($entryID));
+    });
 };
