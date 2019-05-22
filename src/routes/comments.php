@@ -22,5 +22,16 @@ return function ($app) {
         return $response->withJson([
             'success' => true
         ]);
-    }) ;
+    });
+
+    // Update Comment
+    $app->put('/comment/{id}', function ($request, $response, $args) {
+        $commentID = $args['id'];
+        $comment = new Comment($this->db);
+
+        $comment->updateComment($commentID);
+        return $response->withJson([
+            'success' => true
+        ]);
+    });
 };

@@ -3,8 +3,7 @@
 })();
 
 const views = { // Ett objekt
-  login: ['#loginFormTemplate', '#registerFormTemplate'],
-  register: ['#registerFormTemplate']
+  login: ['#loginFormTemplate', '#registerFormTemplate']
 }
 // Nu behöver man en function som renderar ut dessa vyer
 function renderView(view) {

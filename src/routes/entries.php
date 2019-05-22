@@ -48,5 +48,16 @@ return function ($app) {
         return $response->withJson([
             'success' => true
         ]);
-    })/* ->add($auth); */;
+    }) ;
+
+    // Update Entry
+    $app->put('/entry/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
+        $entry = new Entry($this->db);
+
+        $entry->updateEntry($entryID);
+        return $response->withJson([
+            'success' => true
+        ]);
+    });
 };
