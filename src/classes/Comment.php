@@ -20,4 +20,14 @@ class Comment extends Mapper
         ]);
         
     }
+
+    
+    public function getAllComments($entryID)
+    {
+        $statement = $this->db->prepare("SELECT content, createdBy, createdAt FROM comments WHERE entryID = :entryID");
+        $statement->execute([
+            ':entryID' => $entryID
+        ]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
