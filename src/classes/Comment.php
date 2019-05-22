@@ -1,10 +1,10 @@
 <?php
-   class Comment extends Mapper {
 
-    // Skapa ny kommentar
-    public function createComment($content, $createdBy, $entryID)
+class Comment extends Mapper
+{
+    public function createComment($entryID, $content, $createdBy)
     {
-        $statement = $this->db->prepare("INSERT INTO comments(content, createdBy, createdAt, entryID) VALUES (:content, :createdBy, NOW(), :entryID)");
+        $statement = $this->db->prepare("INSERT INTO comments(entryID, content, createdBy, createdAt) VALUES (:entryID, :content, :createdBy, NOW())");
         $statement->execute([
             'content' => $content,
             'createdBy' => $createdBy,
@@ -12,15 +12,12 @@
         ]);
     }
 
-   //Delete Comment
-    public function deleteComment($commentID) {
-            $statement = $this->db->prepare("DELETE FROM comments WHERE commentID = :commentID");
-            $statement->execute([
-                'commentID' => $commentID
-            ]);
+    public function deleteComment($commentID)
+    {
+        $statement = $this->db->prepare("DELETE FROM comments WHERE commentID = :commentID");
+        $statement->execute([
+            'commentID' => $commentID
+        ]);
+        
     }
-
-   }
-
-
-?>
+}

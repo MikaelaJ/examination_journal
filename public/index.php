@@ -28,6 +28,5 @@
 
   $comment = require __DIR__ . '/../src/routes/comments.php';
   $comment($app);
-
   // Run app
   $app->run();
