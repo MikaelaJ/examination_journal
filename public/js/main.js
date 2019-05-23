@@ -1,8 +1,9 @@
 const views = { // Ett objekt
   login: ['#loginFormTemplate', '#registerFormTemplate'],
-  loggedIn: ['#loggedInTemplate'],
+  loggedIn: ['#loggedInTemplate', '#createEntryTemplate'],
   loginError: ['#loginErrorTemplate'],
-  registered: ['#registeredTemplate']
+  registered: ['#registeredTemplate'],
+  createEntry: ['#createEntryTemplate']
 }
 // Nu behöver man en function som renderar ut dessa vyer
 function renderView(view) {
@@ -23,15 +24,6 @@ function renderView(view) {
   })
 }
 
-let test = function () {
-  return fetch('/api/ping')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
-    .then(res => console.log(res))
-};
-
 
 let checkedIfLoggedIn = function () {
   return fetch('/api/ping')
@@ -41,6 +33,7 @@ let checkedIfLoggedIn = function () {
     }
     else{
       console.log("Nope");
+      //Error TODO
       return;
     }
   })
@@ -54,7 +47,6 @@ let checkedIfLoggedIn = function () {
     console.log("res", res);
     if (res) {
       renderView(views.loggedIn)
-      console.log("inloggad");
       bindEvents()
     } else {
       renderView(views.login)

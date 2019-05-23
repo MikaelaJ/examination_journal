@@ -33,7 +33,7 @@ class Entry extends Mapper
             $statement->execute([
                 'title' => $title,
                 'content' => $content,
-                'userID' => $userID /* $_SESSION['userID'] */
+                'userID' => $userID
             ]);
        /*  } */
     }
@@ -55,4 +55,3 @@ class Entry extends Mapper
     }
 
 };
-

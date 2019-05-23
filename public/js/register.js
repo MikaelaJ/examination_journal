@@ -1,4 +1,4 @@
-function register() {
+function register(event) {
     event.preventDefault();
     const formData = new FormData(registerForm)
     fetch('/newuser', {

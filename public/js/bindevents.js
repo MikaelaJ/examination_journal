@@ -1,25 +1,24 @@
 const bindEvents = () => {
     const loginForm = document.querySelector('#loginForm');
     const registerForm = document.querySelector('#registerForm')
+    const createEntryForm = document.querySelector("#createEntryForm")
     // const createEntryForm =  document.querySelector('#createEntryForm')
 
     if (loginForm) {
         loginForm.addEventListener('submit', event => {
-            login()
+            login(event)
             // Kod för att logga in
         })
     }
     if (registerForm) {
-
         registerForm.addEventListener('submit', event => {
-            register();
+            register(event);
             // Kod för att registrera användare
         })
-
-        // createEntryForm.addEventListener('submit', event => {
-
-        //     // Kod för att skapa en entry
-        // })
     }
-
+if(createEntryForm) {
+        createEntryForm.addEventListener('submit', event => {
+            createEntry(event);
+        })
+    }
 }
