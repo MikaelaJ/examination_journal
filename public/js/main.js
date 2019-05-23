@@ -8,7 +8,7 @@ const views = { // Ett objekt
 function renderView(view) {
   // Definiera ett target där vi vill visa templaten
   const target = document.querySelector('main')
-  console.log("hejsan");
+  target.innerHTML = "";
 
   // Loopa igenom våran view
   view.forEach(template => {
@@ -23,11 +23,48 @@ function renderView(view) {
   })
 }
 
-renderView(views.login)
+let test = function () {
+  return fetch('/api/ping')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+    .then(res => console.log(res))
+};
+
+
+let checkedIfLoggedIn = function () {
+  return fetch('/api/ping')
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    else{
+      console.log("Nope");
+      return;
+    }
+  })
+  .then(loggedIn =>  { 
+    console.log(loggedIn);
+    return loggedIn;
+  })
+}
+
+  checkedIfLoggedIn().then(res => {
+    console.log("res", res);
+    if (res) {
+      renderView(views.loggedIn)
+      console.log("inloggad");
+      bindEvents()
+    } else {
+      renderView(views.login)
+      bindEvents()
+    }
+  })
 
 // fetch
 fetch('/users')
-  .then(response => response.json())
+  .then(response => { return response.json() })
   .then(data => {
     console.log(data)
   })
