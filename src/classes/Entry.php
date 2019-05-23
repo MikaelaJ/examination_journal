@@ -28,14 +28,12 @@ class Entry extends Mapper
     // Skapa nytt inlägg
     public function createEntry($title, $content, $userID)
     {
-        /* if (isset($_GET['action']) && $_GET['action'] == 'commitEntry') { */
             $statement = $this->db->prepare("INSERT INTO entries(title, content, createdAt, userID) VALUES (:title, :content, NOW(), :userID)");
             $statement->execute([
                 'title' => $title,
                 'content' => $content,
                 'userID' => $userID /* $_SESSION['userID'] */
             ]);
-       /*  } */
     }
     public function deleteEntry($entryID) {
         /* if(isset($_GET['id'])) { */
