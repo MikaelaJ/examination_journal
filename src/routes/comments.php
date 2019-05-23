@@ -11,7 +11,7 @@ return function ($app) {
         return $response->withJson([
             'success' => true
         ]);
-    })/* ->add($auth) */;
+    })->add($auth);
 
     // Delete Comment
     $app->delete('/comment/{id}', function ($request, $response, $args) {

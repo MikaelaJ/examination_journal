@@ -1,12 +1,8 @@
 const views = { // Ett objekt
-<<<<<<< HEAD:public/main.js
-  login: ['#loginFormTemplate', '#registerFormTemplate']
-=======
   login: ['#loginFormTemplate', '#registerFormTemplate'],
   loggedIn: ['#loggedInTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate']
->>>>>>> ellinor:public/js/main.js
 }
 // Nu behöver man en function som renderar ut dessa vyer
 function renderView(view) {
