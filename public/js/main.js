@@ -3,7 +3,8 @@ const views = { // Ett objekt
   loggedIn: ['#loggedInTemplate', '#createEntryTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate'],
-  createEntry: ['#createEntryTemplate']
+  createEntry: ['#createEntryTemplate'],
+  specificEntry:['#specificEntry']
 }
 // Nu behöver man en function som renderar ut dessa vyer
 function renderView(view) {
