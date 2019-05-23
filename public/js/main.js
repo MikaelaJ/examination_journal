@@ -47,6 +47,8 @@ let checkedIfLoggedIn = function () {
       renderView(views.loggedIn)
       console.log("inloggad");
       bindEvents()
+      renderEntriesByUser();
+      renderEntries();
     } else {
       renderView(views.login)
       renderEntries();
