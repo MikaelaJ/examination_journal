@@ -5,8 +5,6 @@ return function ($app) {
   // Register auth middleware
   $auth = require __DIR__ . '/../middlewares/auth.php';
 
-
-  
   // Add a login route
   $app->post('/api/login', function ($request, $response) {
     $data = $request->getParsedBody(); // får ut en acc array med data som skickats in
