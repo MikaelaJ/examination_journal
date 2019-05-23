@@ -16,6 +16,9 @@
   $login = require __DIR__ . '/../src/routes/login.php';
   $login($app);
 
+  $logout = require __DIR__ . '/../src/routes/logout.php';
+  $logout($app);
+
   $view = require __DIR__ . '/../src/routes/view.php';
   $view($app);
 

@@ -23,15 +23,6 @@ function renderView(view) {
   })
 }
 
-let test = function () {
-  return fetch('/api/ping')
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
-    .then(res => console.log(res))
-};
-
 
 let checkedIfLoggedIn = function () {
   return fetch('/api/ping')

@@ -1,8 +1,7 @@
-
-  <template id="loggedInTemplate">
-    <h1>Hej
+<template id="loggedInTemplate">
+  <h1>Hej
     <?php
-         echo $_SESSION['username'];
+    echo $_SESSION['username'];
     ?></h1>
-
-  </template>
+  <button type="submit" id="logoutBtn">Log out</button>
+</template>
