@@ -1,5 +1,6 @@
 <?php
 
+
 return function ($app) {
   // Register auth middleware
   $auth = require __DIR__ . '/../middlewares/auth.php';
@@ -13,6 +14,7 @@ return function ($app) {
       $_SESSION['username'] = $data['username'];
 
       return $response->withJson($data);
+
     } else {
       return $response->withStatus(401);
     }

@@ -1,9 +1,8 @@
 <?php
-  // Load everything needed
-  require __DIR__ . '/../vendor/autoload.php';
-
   // Start a session here
   session_start();
+  // Load everything needed
+  require __DIR__ . '/../vendor/autoload.php';
 
   // Get settings and instantiate the app
   $settings = require __DIR__ . '/../src/settings.php';
