@@ -12,6 +12,17 @@ class User extends Mapper
     return $statement->fetch(PDO::FETCH_ASSOC);
   }
 
+
+  public function getUserIDFromUsername () 
+  {
+      $statement = $this->db->prepare("SELECT userID FROM users WHERE username = :username");
+        $statement->execute([
+          'username' =>  $_SESSION['username']
+        ]);     
+        
+        return $statement->fetch(PDO::FETCH_ASSOC);   
+  } 
+
   // Hämtar alla användare
   public function getAllUsers()
   {

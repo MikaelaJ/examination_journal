@@ -2,6 +2,7 @@ const bindEvents = () => {
     const loginForm = document.querySelector('#loginForm');
     const logoutBtn = document.getElementById('logoutBtn');
     const registerForm = document.querySelector('#registerForm')
+    const createEntryForm = document.querySelector("#createEntryForm")
     // const createEntryForm =  document.querySelector('#createEntryForm')
 
     if (logoutBtn) {
@@ -21,11 +22,10 @@ const bindEvents = () => {
             register(event);
             // Kod för att registrera användare
         })
-
-        // createEntryForm.addEventListener('submit', event => {
-
-        //     // Kod för att skapa en entry
-        // })
     }
-
+if(createEntryForm) {
+        createEntryForm.addEventListener('submit', event => {
+            createEntry(event);
+        })
+    }
 }
