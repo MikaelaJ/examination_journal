@@ -1,4 +1,5 @@
-function login() {
+function login(event) {
+    console.log("hej");
     event.preventDefault();
     const formData = new FormData(loginForm)
     fetch('/api/login', {

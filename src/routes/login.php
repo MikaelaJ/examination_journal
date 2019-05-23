@@ -13,6 +13,14 @@ return function ($app) {
       $_SESSION['loggedIn'] = true;
       $_SESSION['username'] = $data['username'];
 
+      $statement = $this->db->prepare("SELECT userID FROM users WHERE username = :username");
+      $statement->execute([
+        'username' =>  $data['username']
+      ]);     
+      
+      $userData = $statement->fetch(PDO::FETCH_ASSOC);  
+      $_SESSION['userID'] = $userData[userID];
+
       return $response->withJson($data);
 
     } else {

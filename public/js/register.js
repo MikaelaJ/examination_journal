@@ -1,9 +1,9 @@
-function register() {
+function register(event) {
     event.preventDefault();
-    const formData = new FormData(registerForm)
-    fetch('/newuser', {
+    const registerFormData = new FormData(registerForm)
+    fetch('/api/newuser', {
         method: 'POST',
-        body: formData
+        body: registerFormData
     }).then(response => {
         if (!response.ok) {
             renderView(views.registerError)
@@ -11,7 +11,7 @@ function register() {
             // console.log("har ej skapats")
 
         } else {
-            renderView(views.registered)
+            renderView(views.registered) 
         }
     }).catch(error => {
         console.error(error);

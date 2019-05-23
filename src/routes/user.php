@@ -20,12 +20,12 @@ return function ($app) {
     return $response->withJson($user->getAllUsers());
   });
   
-  $app->post('/newuser', function ($request, $response, $args) {
+  $app->post('/api/newuser', function ($request, $response, $args) {
     $dataBody = $request->getParsedBody();
     $user = new User($this->db); // Den vet vad det är för att den autoladdas i 
-    $user->registerNewUser($dataBody['username'], $dataBody['password']);
+    $user->registerNewUser($dataBody['registerUsername'], $dataBody['registerPassword']);
     echo $user;
-    return $response->withJson([
+    return $response->withJson([ 
       'success' => true
     ]);
   });

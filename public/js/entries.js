@@ -37,6 +37,18 @@ function getTitle(data, elementId) {
     const p = document.createElement('p');
     p.textContent = data[i].title + " " + data[i].userID + " " + data[i].createdAt;
     document.getElementById(elementId).append(p);
+        p.addEventListener('click', function() {
+            console.log(data[i]);
+            renderView(views.specificEntry)
+
+            const h2 = document.createElement('h2');
+            const p = document.createElement('p');
+            h2.textContent = data[i].title +  " "  + data[i].createdAt + " " + data[i].userID;
+            p.textContent =  data[i].content;
+            document.getElementById("entry").append(h2);
+            document.getElementById("entry").append(p);
+          
+        })
 
     p.addEventListener('click', function () {
       console.log(data[i]);
