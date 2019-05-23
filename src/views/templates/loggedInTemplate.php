@@ -4,4 +4,5 @@
     <?php
          echo $_SESSION['username'];
     ?></h1>
+
   </template>

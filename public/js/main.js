@@ -1,5 +1,5 @@
 const views = { // Ett objekt
-  login: ['#loginFormTemplate', '#registerFormTemplate'],
+  login: ['#loginFormTemplate', '#registerFormTemplate', '#allEntriesTemplate'],
   loggedIn: ['#loggedInTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate']
@@ -58,6 +58,7 @@ let checkedIfLoggedIn = function () {
       bindEvents()
     } else {
       renderView(views.login)
+      renderEntries();
       bindEvents()
     }
   })

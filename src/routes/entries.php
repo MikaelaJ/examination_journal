@@ -9,7 +9,7 @@ return function ($app) {
         $entry = new Entry($this->db);
 
         return $response->withJson($entry->getAllEntries());
-    })->add($auth);
+    });
 
     // Hämtar de X senaste inläggen av alla användare
     $app->get('/entries/latest/{nr}', function ($request, $response, $args) {
