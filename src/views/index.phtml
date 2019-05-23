@@ -10,48 +10,14 @@
 </head>
 
 <body>
-  <template id="loginFormTemplate">
-    <h2>Login</h2>
-    <form method="post" id="loginForm">
-      <label for="username">User Name:</label>
-      <input type="text" name="username" id="username">
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password">
-      <button type="submit">Log in</button>
-    </form>
-    <p>Det här är en template som visar ett loginformulär</p>
-  </template>
 
-  <template id="loggedInTemplate">
-    <h1>Hej
-    <?php
-         echo $_SESSION['username'];
-
-    ?></h1>
-  </template>
-  <template id="loginErrorTemplate">
-    <h1>Fel användarnamn!</h1>
-  </template>
-  
-
-  <template id="registerFormTemplate">
-    <h2>Register</h2>
-    <form method="post" id="registerForm">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="registerUsername">
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="registerPassword">
-
-      <button type="submit">Register</button>
-    </form>
-
-    <p>Det här är en template som visar ett registreringsformulär</p>
-  </template>
-
-  <template id="registeredTemplate">
-  <h2>Användaren har skapats!</h2>
-  </template>
-
+<?php
+include('../src/views/templates/loggedInTemplate.php');
+include('../src/views/templates/loginErrorTemplate.php');
+include('../src/views/templates/loginFormTemplate.php');
+include('../src/views/templates/registeredTemplate.php');
+include('../src/views/templates/registerFormTemplate.php');
+?>
   <div class="container">
     <header>
       <h1><?= $title ?></h1>
@@ -63,6 +29,7 @@
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/register.js"></script>
   <script type="text/javascript" src="js/login.js"></script>
+  <script type="text/javascript" src="js/bindevents.js"></script>
 </body>
 
 </html>
