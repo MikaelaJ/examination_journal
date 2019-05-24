@@ -21,8 +21,8 @@ return function ($app) {
     });
 
     // Hämtar alla inlägg av en specifik användare
-    $app->get('/user/allpostsby/{id}', function ($request, $response, $args) {
-        $userID = $args['id'];
+    $app->get('/api/getPostsByUser', function ($request, $response) {
+        $userID = $_SESSION['userID'];
 
         $entry = new Entry($this->db);
 
@@ -44,7 +44,7 @@ return function ($app) {
     })->add($auth);
 
     // Delete Entry
-    $app->delete('/entry/{id}', function ($request, $response, $args) {
+    $app->delete('/api/entry/{id}', function ($request, $response, $args) {
         $entryID = $args['id'];
         $entry = new Entry($this->db);
 
@@ -55,7 +55,7 @@ return function ($app) {
     }) ;
 
     // Update Entry
-    $app->put('/entry/{id}', function ($request, $response, $args) {
+    $app->put('/api/entry/{id}', function ($request, $response, $args) {
         $entryID = $args['id'];
         $entry = new Entry($this->db);
 

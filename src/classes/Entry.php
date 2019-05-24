@@ -18,7 +18,7 @@ class Entry extends Mapper
 
     public function getAllEntriesByUser($userID)
     {
-        $statement = $this->db->prepare("SELECT title, content FROM entries WHERE userID = :userID");
+        $statement = $this->db->prepare("SELECT * FROM entries WHERE userID = :userID");
         $statement->execute([
             ':userID' => $userID
         ]);
