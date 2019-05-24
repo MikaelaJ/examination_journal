@@ -33,6 +33,7 @@ class User extends Mapper
 
   public function registerNewUser($username, $password)
   {
+    
     $statement = $this->db->prepare("INSERT INTO users (username, password) VALUES (:username, :password)"); // Using named placeholders here, easier to read
 
       $statement->execute([
