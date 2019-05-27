@@ -28,6 +28,13 @@ function renderCommentsByEntry(entryID) {
       document.getElementById("comment").append(p);
       document.getElementById("comment").append(span);
 
+      h3.addEventListener('click', function(e){
+        renderView(views.specificComment);
+       // getComment(this.data); ?????
+
+    });
+
+
     }
     
   }

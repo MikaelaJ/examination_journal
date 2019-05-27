@@ -27,18 +27,6 @@ function getUsers(data, users) {
             // Add value
             h6.textContent = `Name: ${data[i].username}`;
             document.getElementById(users).append(h6);
-
-            /* h2.addEventListener('click', function () {
-                let entryID = data[i].entryID;
-                renderView(views.specificEntry);
-                updateEntry(entryID);
-
-                const h2 = document.createElement('h2');
-                const p = document.createElement('p');
-                h2.textContent = data[i].title + " " + data[i].createdAt + " userID: " + data[i].userID + " entryID: " + data[i].entryID;
-                p.textContent = data[i].content;
-                document.getElementById("entry").append(h2);
-                document.getElementById("entry").append(p); */
             }
         }
     
