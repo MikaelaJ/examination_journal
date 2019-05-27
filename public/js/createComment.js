@@ -1,6 +1,5 @@
 function createComment(event, entryID) {
     event.preventDefault();
-    console.log(createCommentForm);
     const formData = new FormData(createCommentForm)
 
 //  formData.get('content')
@@ -8,11 +7,10 @@ function createComment(event, entryID) {
         method: 'POST',
         body: formData
     }).then(response => {
-        console.log(response);
         return response.json() 
     })
     .then( res => {
-        console.log(res);
+        return res;
     })
     .catch(error => {
         console.error(error);
