@@ -14,7 +14,7 @@ return function ($app) {
   })->add($auth);
 
   // Hämtar alla användare
-  $app->get('/users', function ($request, $response) {
+  $app->get('/api/users', function ($request, $response) {
     $user = new User($this->db);
   
     return $response->withJson($user->getAllUsers());

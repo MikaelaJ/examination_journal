@@ -6,7 +6,6 @@
       <label for="password">Password:</label>
       <input type="password" name="password" id="password">
       <button type="submit">Log in</button>
-      <button type="submit">Show Friends</button>
     </form>
     <p>Det här är en template som visar ett loginformulär</p>
   </template>

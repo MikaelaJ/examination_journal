@@ -13,23 +13,6 @@ function renderEntries() {
 
 
 /* -----------Render Entries By User (shown when logged in=------------- */
-function renderEntriesByUser() {
-  fetch("/api/getPostsByUser")
-    .then(response => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        console.log("något blev fel");
-      };
-    })
-    .then(data => {
-      // renderView(views.allEntries)
-      console.log("Här kommer data", data); //En array 
-      getTitle(data, "entriesByMe");
-    })
-}
-
-/* -----------Render Entries By User (shown when logged in=------------- */
   function renderEntriesByUser() {
     fetch("/api/getPostsByUser")
       .then(response => {
@@ -68,7 +51,11 @@ function renderEntriesByUser() {
 
         renderView(views.specificEntry);
         updateEntry(entryID);
+<<<<<<< HEAD
         deleteEntry(entryID)
+=======
+        renderCommentsByEntry(entryID);
+>>>>>>> ea805899a839d42bec6f609c1a13a2f840338df0
     
         const h2 = document.createElement('h2');
         const p = document.createElement('p');
@@ -77,6 +64,7 @@ function renderEntriesByUser() {
         document.getElementById("entry").append(h2);
         document.getElementById("entry").append(p);
 
+        //CreateComment
         const createCommentForm = document.querySelector("#createCommentForm")
         console.log(createCommentForm, entryID)
         createCommentForm.addEventListener('submit', function(event) {

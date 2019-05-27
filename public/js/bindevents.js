@@ -3,7 +3,8 @@ const bindEvents = () => {
     const logoutBtn = document.getElementById('logoutBtn');
     const registerForm = document.querySelector('#registerForm')
     const createEntryForm = document.querySelector("#createEntryForm")
-   // const createCommentForm = document.querySelector("#createCommentForm")
+    const updateEntryForm = document.getElementById("#updateEntry")
+    const allUsersBtn = document.getElementById("allUsersBtn")
     // const createEntryForm =  document.querySelector('#createEntryForm')
 
     if (logoutBtn) {
@@ -31,9 +32,11 @@ const bindEvents = () => {
             createEntry(event);
         })
     }
-  /*  if(createCommentForm) {
-        createCommentForm.addEventListener('submit', event => {
-            createComment(event);
+
+    if (allUsersBtn) {
+        allUsersBtn.addEventListener('click', event => {
+            renderUsersBtn(event);
         })
-    } */
+    }
+
 }

@@ -1,6 +1,12 @@
 <template id="specificEntry">
+<<<<<<< HEAD
   <h1>Inlägg</h1>
   <div id="entry"></div>
+=======
+<h1>Inlägg</h1>
+<div id="entry"></div>
+<div id="comment"></div>
+>>>>>>> ea805899a839d42bec6f609c1a13a2f840338df0
 
   <form method="post" id="deleteEntryForm">
     <button type="submit" id="deleteEntry">Delete entry</button>
