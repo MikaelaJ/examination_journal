@@ -1,16 +1,3 @@
-/*function checkEntryID( entryID){
-    e.preventDefault();
-    //Skickar in entryID informationen till createComment
-    //const createCommentForm = document.querySelector('#createCommentForm')
-    const entryIDInput = document.createElement('input');
-    entryIDInput.type = 'hidden';
-    entryIDInput.name= 'entryID';
-    entryIDInput.value = entryID;
-    console.log(createCommentForm);
-    createCommentForm.append(entryIDInput);
-  }*/
-
-
 function createComment(event, entryID) {
     event.preventDefault();
     console.log(createCommentForm);
@@ -31,4 +18,3 @@ function createComment(event, entryID) {
         console.error(error);
     })
 }
-

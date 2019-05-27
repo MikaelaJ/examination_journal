@@ -1,6 +1,7 @@
 <template id="specificEntry">
 <h1>Inlägg</h1>
 <div id="entry"></div>
+<div id="comment"></div>
 
 <h2>Create Comment</h2>
     <form method="post" id="createCommentForm">

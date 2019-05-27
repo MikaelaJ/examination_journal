@@ -51,12 +51,15 @@ let checkedIfLoggedIn = function () {
       console.log("checkedIfLoggedIn");
       renderView(views.loggedIn)
       renderEntriesByUser();
+      renderCommentsByEntry();
       renderEntries();
       bindEvents()
+
     } else {
       renderView(views.login)
       renderEntries();
-      // bindEvents()
+      renderCommentsByEntry();
+      bindEvents()
     }
   })
 

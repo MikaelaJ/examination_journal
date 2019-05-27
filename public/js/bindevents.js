@@ -3,8 +3,7 @@ const bindEvents = () => {
     const logoutBtn = document.getElementById('logoutBtn');
     const registerForm = document.querySelector('#registerForm')
     const createEntryForm = document.querySelector("#createEntryForm")
-   // const createCommentForm = document.querySelector("#createCommentForm")
-    // const createEntryForm =  document.querySelector('#createEntryForm')
+
 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", event => {
@@ -31,9 +30,4 @@ const bindEvents = () => {
             createEntry(event);
         })
     }
-  /*  if(createCommentForm) {
-        createCommentForm.addEventListener('submit', event => {
-            createComment(event);
-        })
-    } */
 }
