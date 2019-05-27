@@ -1,5 +1,4 @@
 function login(event) {
-    console.log("hej");
     event.preventDefault();
     const formData = new FormData(loginForm)
     fetch('/api/login', {
@@ -9,6 +8,8 @@ function login(event) {
         if (!response.ok) {
             renderView(views.loginError)
             return Error(response.statusText)
+        } else {
+            console.log("inloggad");
         }
     }).catch(error => {
         console.error(error);

@@ -55,13 +55,15 @@ return function ($app) {
     }) ;
 
     // Update Entry
-    $app->put('/api/entry/{id}', function ($request, $response, $args) {
-        $entryID = $args['id'];
-        $entry = new Entry($this->db);
 
-        $entry->updateEntry($entryID);
+    $app->post('/api/entry/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
+        $dataBody = $request->getParsedBody(); 
+        $newEntry = new Entry($this->db);
+
+        $newEntry->updateEntry($entryID, $dataBody['title'], $dataBody['content']);
         return $response->withJson([
             'success' => true
         ]);
     });
-};
+}; 

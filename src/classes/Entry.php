@@ -46,11 +46,13 @@ class Entry extends Mapper
         /* } */
     }
 
-    public function updateEntry($entryID) // $content $title will come from a variable that comes from JS
+    public function updateEntry($entryID, $title, $content) // $content $title will come from a variable that comes from JS
     {
-        $statement = $this->db->prepare("UPDATE entries SET content='hello hello hello', title='better tilte' WHERE entryID = :entryID;");
+        $statement = $this->db->prepare("UPDATE entries SET title=:title, content=:content WHERE entryID = :entryID;");
         $statement->execute([
-            'entryID' => $entryID
+            'entryID' => $entryID,
+            'title' => $title,
+            'content' => $content
         ]);
     }
 
