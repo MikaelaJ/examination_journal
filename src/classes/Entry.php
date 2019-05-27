@@ -4,7 +4,7 @@ class Entry extends Mapper
 {
     public function getAllEntries()
     {
-        $statement = $this->db->prepare("SELECT * FROM entries");
+        $statement = $this->db->prepare( "SELECT entries.*, users.username FROM entries INNER JOIN users ON entries.userID = users.userID;");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -18,11 +18,20 @@ class Entry extends Mapper
 
     public function getAllEntriesByUser($userID)
     {
-        $statement = $this->db->prepare("SELECT * FROM entries WHERE userID = :userID");
+        $statement = $this->db->prepare( "SELECT entries.*, users.username FROM entries INNER JOIN users ON entries.userID = users.userID WHERE users.userID = :userID");
         $statement->execute([
             ':userID' => $userID
         ]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getNameByUser($userID)
+    {
+        $statement = $this->db->prepare("SELECT username FROM users WHERE userID = :userID");
+        $statement->execute([
+            ':userID' => $userID
+        ]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     // Skapa nytt inlägg

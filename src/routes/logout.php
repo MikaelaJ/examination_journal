@@ -10,6 +10,6 @@ return function ($app) {
         session_unset();
         session_destroy();
 
-        return $response -> withJson(['loggedIn' => false]);
-        });
-        }; 
+        return $response->withJson(['loggedIn' => false]);
+    });
+};

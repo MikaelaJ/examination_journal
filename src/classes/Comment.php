@@ -7,7 +7,7 @@ class Comment extends Mapper
         $statement = $this->db->prepare("INSERT INTO comments(entryID, content, createdBy, createdAt) VALUES (:entryID, :content, :createdBy, NOW())");
         $statement->execute([
             'content' => $content,
-            'createdBy' => $createdBy,
+            'createdBy' => $createdBy, // UserID
             'entryID' => $entryID /* $_SESSION['entryID'] */
         ]);
     }

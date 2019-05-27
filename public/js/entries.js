@@ -16,39 +16,43 @@ function renderEntriesByUser() {
   fetch("/api/getPostsByUser")
     .then(response => {
       if (response.ok) {
-        console.log(response)
         return response.json()
       } else {
         console.log("något blev fel");
-      }
-      ;
+      };
     })
     .then(data => {
       // renderView(views.allEntries)
       console.log("Här kommer data", data); //En array 
-
       getTitle(data, "entriesByMe");
     })
 }
 
 function getTitle(data, elementId) {
-  // let title ="";
   for (let i = 0; i < data.length; i++) {
     const p = document.createElement('p');
-    p.textContent = data[i].title + " " + data[i].userID + " " + data[i].createdAt;
-    document.getElementById(elementId).append(p);
-        p.addEventListener('click', function() {
-            console.log(data[i]);
-            renderView(views.specificEntry)
+    const span = document.createElement('span');
+    const h2 = document.createElement('h2');
+    h2.textContent = `${data[i].title}`;
+    p.textContent = `${data[i].content} ${data[i].username} ${data[i].userID}`;
+    span.textContent = `${data[i].createdAt}`;
 
-            const h2 = document.createElement('h2');
-            const p = document.createElement('p');
-            h2.textContent = data[i].title +  " "  + data[i].createdAt + " " + data[i].userID;
-            p.textContent =  data[i].content;
-            document.getElementById("entry").append(h2);
-            document.getElementById("entry").append(p);
-          
-        })
+    document.getElementById(elementId).append(h2);
+    document.getElementById(elementId).append(p);
+    document.getElementById(elementId).append(span);
+
+    p.addEventListener('click', function () {
+      console.log(data[i]);
+      renderView(views.specificEntry)
+
+      const h2 = document.createElement('h2');
+      const p = document.createElement('p');
+      h2.textContent = `${data[i].title} ${data[i].createdAt} ${data[i].userID}`;
+      p.textContent = data[i].content;
+      document.getElementById("entry").append(h2);
+      document.getElementById("entry").append(p);
+
+    })
 
     p.addEventListener('click', function () {
       console.log(data[i]);
@@ -56,5 +60,6 @@ function getTitle(data, elementId) {
     })
   }
 }
+
 
 

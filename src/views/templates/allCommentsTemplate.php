@@ -1,4 +1,4 @@
-<template id="allEntriesTemplate">
+<template id="allCommentsTemplate">
 <h1>Alla våra inlägg</h1>
-<div id="entries"></div>
+<div id="comments"></div>
 </template>
