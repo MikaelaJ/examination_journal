@@ -28,6 +28,8 @@ function renderCommentsByEntry(entryID) {
       document.getElementById("comment").append(p);
       document.getElementById("comment").append(span);
 
+
+      
     }
     
   }

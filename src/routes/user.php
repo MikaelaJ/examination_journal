@@ -28,5 +28,13 @@ return function ($app) {
     'success' => true
     ]);
   });
-};
 
+
+  
+  $app->get('api/search/{searchText}', function ($request, $response, $args) {
+    $searchText = $args['searchText'];
+    $search = new User($this->db);
+
+    return $response->withJson($search->searchDb($searchText));
+  });
+};

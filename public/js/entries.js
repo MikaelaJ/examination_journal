@@ -24,7 +24,6 @@ function renderEntries() {
       })
       .then(data => {
         // renderView(views.allEntries)
-        console.log("Här kommer data", data); //En array 
         getTitle(data, "entriesByMe");
       })
   }
@@ -34,6 +33,7 @@ function renderEntries() {
       const p = document.createElement('p');
       const span = document.createElement('span');
       const h2 = document.createElement('h2');
+      
       h2.textContent = ` title: ${data[i].title}`;
       p.textContent = ` ${data[i].username} ${data[i].userID}`;
       span.textContent = `${data[i].createdAt}`;
@@ -45,10 +45,13 @@ function renderEntries() {
       /* p.textContent = "title: " + data[i].title + " userid: " + data[i].userID + " createdAt " + data[i].createdAt; */
       document.getElementById(elementId).append(p);
 
-      let entryID = data[i].entryID;
+    
       h2.addEventListener('click', function(e){
+        let entryID = data[i].entryID;
+
         renderView(views.specificEntry);
         updateEntry(entryID);
+        deleteEntry(entryID)
         renderCommentsByEntry(entryID);
     
         const h2 = document.createElement('h2');
@@ -65,30 +68,24 @@ function renderEntries() {
           createComment(event, entryID);
         });
       });
-    }
-    
+    } 
   }
 
 
-
-
 function updateEntry(entryID) {
-  const btn = document.querySelector('#updateEntryForm');
-  btn.addEventListener('submit', function (e) {
+  const updateBtn = document.querySelector('#updateEntryForm');
+  updateBtn.addEventListener('submit', function (e) {
     e.preventDefault();
-    console.log(btn);
+    console.log(updateBtn);
 
-    putEntryToDb(entryID, btn)
+    putEntryToDb(entryID, updateBtn)
   })
   console.log(entryID);
 }
 
 function putEntryToDb(entryID, elementID) {
   const formData = new FormData(elementID)
-  // const object= {};
-  // formData.forEach((value, key) => {object[key] = value});
-  // const json = JSON.stringify(object);
-  // console.log(json);
+
   fetch(`/api/entry/${entryID}`, {
       method: 'POST',
       body: formData
@@ -98,9 +95,28 @@ function putEntryToDb(entryID, elementID) {
     })
     .then(res => {
       console.log("resp2", res);
-      return res; 
+      return res;
     })
     .catch(error => {
       console.error(error);
     })
+}
+
+function deleteEntry(entryID) {
+  const deleteBtn = document.querySelector('#deleteEntryForm');
+  deleteBtn.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(deleteEntryForm)
+    fetch(`/api/entry/${entryID}`, {
+        method: 'DELETE',
+        body: formData
+      }).then(response => {
+        console.log("resp1", response);
+        return response.json()
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  })
 }
