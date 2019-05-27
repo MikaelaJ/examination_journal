@@ -51,11 +51,8 @@ function renderEntries() {
 
         renderView(views.specificEntry);
         updateEntry(entryID);
-<<<<<<< HEAD
         deleteEntry(entryID)
-=======
         renderCommentsByEntry(entryID);
->>>>>>> ea805899a839d42bec6f609c1a13a2f840338df0
     
         const h2 = document.createElement('h2');
         const p = document.createElement('p');
