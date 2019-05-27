@@ -1,8 +1,9 @@
-
 /* -----------Render All Entries (show on first page and when logged in)------------- */
 function renderEntries() {
   fetch('/entries')
-    .then(response => { return response.json() })
+    .then(response => {
+      return response.json()
+    })
     .then(data => {
       // renderView(views.allEntries)
       console.log("Här kommer data", data); //En array 
@@ -33,33 +34,61 @@ function getTitle(data, elementId) {
     const p = document.createElement('p');
     const span = document.createElement('span');
     const h2 = document.createElement('h2');
-    h2.textContent = `${data[i].title}`;
-    p.textContent = `${data[i].content} ${data[i].username} ${data[i].userID}`;
+    h2.textContent = ` title: ${data[i].title}`;
+    p.textContent = ` ${data[i].username} ${data[i].userID}`;
     span.textContent = `${data[i].createdAt}`;
 
     document.getElementById(elementId).append(h2);
     document.getElementById(elementId).append(p);
     document.getElementById(elementId).append(span);
 
-    p.addEventListener('click', function () {
-      console.log(data[i]);
-      renderView(views.specificEntry)
+    /* p.textContent = "title: " + data[i].title + " userid: " + data[i].userID + " createdAt " + data[i].createdAt; */
+    document.getElementById(elementId).append(p);
+
+    h2.addEventListener('click', function () {
+      let entryID = data[i].entryID;
+      renderView(views.specificEntry);
+      updateEntry(entryID);
 
       const h2 = document.createElement('h2');
       const p = document.createElement('p');
-      h2.textContent = `${data[i].title} ${data[i].createdAt} ${data[i].userID}`;
+      h2.textContent = data[i].title + " " + data[i].createdAt + " userID: " + data[i].userID + " entryID: " + data[i].entryID;
       p.textContent = data[i].content;
       document.getElementById("entry").append(h2);
       document.getElementById("entry").append(p);
-
-    })
-
-    p.addEventListener('click', function () {
-      console.log(data[i]);
-
     })
   }
 }
 
+function updateEntry(entryID) {
+  const btn = document.querySelector('#updateEntryForm');
+  btn.addEventListener('submit', function (e) {
+    e.preventDefault();
+    console.log(btn);
 
+    putEntryToDb(entryID, btn)
+  })
+  console.log(entryID);
+}
 
+function putEntryToDb(entryID, elementID) {
+  const formData = new FormData(elementID)
+  // const object= {};
+  // formData.forEach((value, key) => {object[key] = value});
+  // const json = JSON.stringify(object);
+  // console.log(json);
+  fetch(`/api/entry/${entryID}`, {
+      method: 'POST',
+      body: formData
+    }).then(response => {
+      console.log("resp1", response);
+      return response.json()
+    })
+    .then(res => {
+      console.log("resp2", res);
+      return res; 
+    })
+    .catch(error => {
+      console.error(error);
+    })
+}

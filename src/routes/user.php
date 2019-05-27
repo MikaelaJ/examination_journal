@@ -22,15 +22,11 @@ return function ($app) {
   
   $app->post('/api/newuser', function ($request, $response, $args) {
     $dataBody = $request->getParsedBody();
-    $user = new User($this->db); // Den vet vad det är för att den autoladdas i 
-    $user->registerNewUser($dataBody['registerUsername'], $dataBody['registerPassword']);
-    echo $user;
+    $user = new User($this->db); // Den vet vad det är för att den autoladdas i
+    $user->registerNewUser($dataBody['username'], $dataBody['password']); 
     return $response->withJson([ 
-      'success' => true
+    'success' => true
     ]);
   });
-
-
-
 };
 

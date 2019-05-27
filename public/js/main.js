@@ -3,7 +3,6 @@ const views = { // Ett objekt
   loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#allEntriesTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate'],
-  createEntry: ['#createEntryTemplate'],
   specificEntry:['#specificEntry']
 }
 // Nu behöver man en function som renderar ut dessa vyer
@@ -47,6 +46,7 @@ let checkedIfLoggedIn = function () {
   checkedIfLoggedIn().then(res => {
     console.log("res", res);
     if (res) {
+      console.log("checkedIfLoggedIn");
       renderView(views.loggedIn)
       renderEntriesByUser();
       renderEntries();

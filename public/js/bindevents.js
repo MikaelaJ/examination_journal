@@ -3,6 +3,7 @@ const bindEvents = () => {
     const logoutBtn = document.getElementById('logoutBtn');
     const registerForm = document.querySelector('#registerForm')
     const createEntryForm = document.querySelector("#createEntryForm")
+    const updateEntryForm = document.getElementById("#updateEntry")
     // const createEntryForm =  document.querySelector('#createEntryForm')
 
     if (logoutBtn) {
@@ -17,15 +18,18 @@ const bindEvents = () => {
             // Kod för att logga in
         })
     }
+
     if (registerForm) {
         registerForm.addEventListener('submit', event => {
             register(event);
             // Kod för att registrera användare
         })
     }
-if(createEntryForm) {
-        createEntryForm.addEventListener('submit', event => {
+
+    if (createEntryForm) {
+        createEntryForm.addEventListener('click', event => {
             createEntry(event);
         })
     }
+
 }
