@@ -1,5 +1,6 @@
 /* ----------- Render comments By entry ------------- */
 function renderCommentsByEntry(entryID) {
+  console.log("hej", entryID);
     fetch(`/comments/all/${entryID}`)
       .then(response => {
         if (response.ok) {
@@ -9,7 +10,6 @@ function renderCommentsByEntry(entryID) {
         };
       })
       .then(data => {
-        console.log("Här kommer data", data); //En array 
         getComment(data, "commentsByEntry");
       })
   }
@@ -36,7 +36,7 @@ function renderCommentsByEntry(entryID) {
      
          const h3 = document.createElement('h2');
          const p = document.createElement('p');
-         h3.textContent = data[i].createdAt + " userID: " + data[i].userID + " entryID: " + data[i].entryID;
+         h3.textContent = data[i].createdAt + " userID: " + data[i].createdBy + " entryID: " + data[i].entryID;
          p.textContent = data[i].content;
          document.getElementById("comment").append(h3);
          document.getElementById("comment").append(p);

@@ -3,7 +3,6 @@ function renderUsersBtn(event) {
     fetch('/api/users')
         .then(response => {
         if (!response.ok) {
-            console.log("Hello, inne i response", response);
             renderView(views.registerError)
             return Error(response.statusText)
         } else {
@@ -13,7 +12,6 @@ function renderUsersBtn(event) {
     })
     .then(data => {
         getUsers(data, "users");
-        console.log("Hej", data);
     })
         .catch(error => {
             console.error(error);

@@ -6,7 +6,6 @@ function renderEntries() {
     })
     .then(data => {
       // renderView(views.allEntries)
-      console.log("Här kommer data", data); //En array 
       getTitle(data, "entries");
     })
 }
@@ -63,7 +62,6 @@ function renderEntries() {
 
         //CreateComment
         const createCommentForm = document.querySelector("#createCommentForm")
-        console.log(createCommentForm, entryID)
         createCommentForm.addEventListener('submit', function(event) {
           createComment(event, entryID);
         });
@@ -76,7 +74,6 @@ function updateEntry(entryID) {
   const updateBtn = document.querySelector('#updateEntryForm');
   updateBtn.addEventListener('submit', function (e) {
     e.preventDefault();
-    console.log(updateBtn);
 
     putEntryToDb(entryID, updateBtn)
   })

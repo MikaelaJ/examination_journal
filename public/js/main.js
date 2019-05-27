@@ -35,21 +35,18 @@ let checkedIfLoggedIn = function () {
       return response.json();
     }
     else{
-      console.log("Nope");
+      console.log("Något gick fel");
       //Error TODO
       return;
     }
   })
   .then(loggedIn =>  { 
-    console.log(loggedIn);
     return loggedIn;
   })
 }
 
   checkedIfLoggedIn().then(res => {
-    console.log("res", res);
     if (res) {
-      console.log("checkedIfLoggedIn");
       renderView(views.loggedIn);
       renderEntriesByUser();
       renderCommentsByEntry();
@@ -68,7 +65,6 @@ let checkedIfLoggedIn = function () {
 fetch('/api/users')
   .then(response => { return response.json() })
   .then(data => {
-    console.log(data)
   })
 
 /* fetch ('/entries')
