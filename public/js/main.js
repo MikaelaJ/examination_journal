@@ -22,7 +22,9 @@ function renderView(view) {
     div.innerHTML = templateMarkup;
     //Lägg in den diven i target (main-elementet)
     target.append(div);
+
   })
+  bindEvents()
 }
 
 
@@ -54,7 +56,7 @@ let checkedIfLoggedIn = function () {
     } else {
       renderView(views.login)
       renderEntries();
-      bindEvents()
+      // bindEvents()
     }
   })
 

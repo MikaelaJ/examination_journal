@@ -41,6 +41,13 @@ function getTitle(data, elementId) {
             console.log(data[i]);
             renderView(views.specificEntry)
 
+            //Skickar in entryID informationen till createComment
+            const entryIDInput = document.createElement('input');
+            entryIDInput.type = 'hidden';
+            entryIDInput.name= 'entryID';
+            entryIDInput.value = data[i].entryID;
+            createCommentForm.append(entryIDInput);
+
             const h2 = document.createElement('h2');
             const p = document.createElement('p');
             h2.textContent = data[i].title +  " "  + data[i].createdAt + " " + data[i].userID;
