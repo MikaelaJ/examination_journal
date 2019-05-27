@@ -20,13 +20,22 @@ return function ($app) {
         return $response->withJson($entry->getLatestEntries($number));
     });
 
-    // Hämtar alla inlägg av en specifik användare
+    // Get all posts by UserId
     $app->get('/api/getPostsByUser', function ($request, $response) {
         $userID = $_SESSION['userID'];
 
         $entry = new Entry($this->db);
 
         return $response->withJson($entry->getAllEntriesByUser($userID));
+    });
+
+    // Get username by userID
+    $app->get('/api/getNameByUser', function ($request, $response) {
+        $userID = $_SESSION['userID'];
+
+        $entry = new Entry($this->db);
+
+        return $response->withJson($entry->getNameByUser($userID));
     });
 
     // Lägga in en ny entry
@@ -55,13 +64,15 @@ return function ($app) {
     }) ;
 
     // Update Entry
-    $app->put('/api/entry/{id}', function ($request, $response, $args) {
-        $entryID = $args['id'];
-        $entry = new Entry($this->db);
 
-        $entry->updateEntry($entryID);
+    $app->post('/api/entry/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
+        $dataBody = $request->getParsedBody(); 
+        $newEntry = new Entry($this->db);
+
+        $newEntry->updateEntry($entryID, $dataBody['title'], $dataBody['content']);
         return $response->withJson([
             'success' => true
         ]);
     });
-};
+}; 

@@ -4,7 +4,7 @@ class Entry extends Mapper
 {
     public function getAllEntries()
     {
-        $statement = $this->db->prepare("SELECT * FROM entries");
+        $statement = $this->db->prepare( "SELECT entries.*, users.username FROM entries INNER JOIN users ON entries.userID = users.userID;");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -18,11 +18,20 @@ class Entry extends Mapper
 
     public function getAllEntriesByUser($userID)
     {
-        $statement = $this->db->prepare("SELECT * FROM entries WHERE userID = :userID");
+        $statement = $this->db->prepare( "SELECT entries.*, users.username FROM entries INNER JOIN users ON entries.userID = users.userID WHERE users.userID = :userID");
         $statement->execute([
             ':userID' => $userID
         ]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getNameByUser($userID)
+    {
+        $statement = $this->db->prepare("SELECT username FROM users WHERE userID = :userID");
+        $statement->execute([
+            ':userID' => $userID
+        ]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
     // Skapa nytt inlägg
@@ -46,11 +55,13 @@ class Entry extends Mapper
         /* } */
     }
 
-    public function updateEntry($entryID) // $content $title will come from a variable that comes from JS
+    public function updateEntry($entryID, $title, $content) // $content $title will come from a variable that comes from JS
     {
-        $statement = $this->db->prepare("UPDATE entries SET content='hello hello hello', title='better tilte' WHERE entryID = :entryID;");
+        $statement = $this->db->prepare("UPDATE entries SET title=:title, content=:content WHERE entryID = :entryID;");
         $statement->execute([
-            'entryID' => $entryID
+            'entryID' => $entryID,
+            'title' => $title,
+            'content' => $content
         ]);
     }
 

@@ -2,7 +2,7 @@
 
 class Comment extends Mapper
 {
-    public function createComment($entryID, $content, $createdBy)
+    public function createComment($entryID, $content)
     {
         $statement = $this->db->prepare("INSERT INTO comments(entryID, content, createdBy, createdAt) VALUES (:entryID, :content, :createdBy, NOW())");
         $statement->execute([
