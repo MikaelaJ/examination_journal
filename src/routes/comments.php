@@ -4,10 +4,11 @@ return function ($app) {
     $auth = require __DIR__ . '/../middlewares/auth.php'; // Kod som körs innan och efter en route-funktion körs.
 
     // Comment a blog post
-    $app->post('/createComment', function ($request, $response, $args) {
+    $app->post('/createComment/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
         $dataBody = $request->getParsedBody(); // getParsedData() funkar endast på post
         $comment = new Comment($this->db);
-        $comment->createComment($dataBody['entryID'], $dataBody['content'], $dataBody['createdBy']);
+        $comment->createComment($entryID, $dataBody['content']);
         return $response->withJson([
             'success' => true
         ]);

@@ -2,12 +2,12 @@
 
 class Comment extends Mapper
 {
-    public function createComment($entryID, $content, $createdBy)
+    public function createComment($entryID, $content)
     {
         $statement = $this->db->prepare("INSERT INTO comments(entryID, content, createdBy, createdAt) VALUES (:entryID, :content, :createdBy, NOW())");
         $statement->execute([
             'content' => $content,
-            'createdBy' => $createdBy, // UserID
+            'createdBy' =>  $_SESSION['userID'],
             'entryID' => $entryID /* $_SESSION['entryID'] */
         ]);
     }
@@ -31,7 +31,7 @@ class Comment extends Mapper
     
     public function getAllComments($entryID)
     {
-        $statement = $this->db->prepare("SELECT content, createdBy, createdAt FROM comments WHERE entryID = :entryID");
+        $statement = $this->db->prepare("SELECT content, createdAt, users.username FROM comments INNER JOIN users ON comments.createdBy = users.userID;");
         $statement->execute([
             ':entryID' => $entryID
         ]);
