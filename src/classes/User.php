@@ -41,4 +41,11 @@ class User extends Mapper
         ":password" => password_hash($password, PASSWORD_BCRYPT) // Make a hashed password
       ]);
   }
+
+  public function searchDb($searchText) 
+  {
+    $statement = $this->db->prepare("SELECT * FROM entries WHERE content LIKE '%{$searchText}%' OR title LIKE '${searchText}'" );
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
 };

@@ -1,6 +1,6 @@
 const views = { // Ett objekt
   login: ['#loginFormTemplate', '#registerFormTemplate', '#allEntriesTemplate'],
-  loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#updateEntryTemplate'],
+  loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#allEntriesTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate'],
   specificEntry:['#specificEntry']
@@ -21,7 +21,9 @@ function renderView(view) {
     div.innerHTML = templateMarkup;
     //Lägg in den diven i target (main-elementet)
     target.append(div);
+
   })
+  bindEvents()
 }
 
 
@@ -48,13 +50,13 @@ let checkedIfLoggedIn = function () {
     if (res) {
       console.log("checkedIfLoggedIn");
       renderView(views.loggedIn)
-      bindEvents()
       renderEntriesByUser();
-      /* renderEntries(); */
+      renderEntries();
+      bindEvents()
     } else {
       renderView(views.login)
       renderEntries();
-      bindEvents()
+      // bindEvents()
     }
   })
 

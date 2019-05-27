@@ -20,13 +20,22 @@ return function ($app) {
         return $response->withJson($entry->getLatestEntries($number));
     });
 
-    // Hämtar alla inlägg av en specifik användare
+    // Get all posts by UserId
     $app->get('/api/getPostsByUser', function ($request, $response) {
         $userID = $_SESSION['userID'];
 
         $entry = new Entry($this->db);
 
         return $response->withJson($entry->getAllEntriesByUser($userID));
+    });
+
+    // Get username by userID
+    $app->get('/api/getNameByUser', function ($request, $response) {
+        $userID = $_SESSION['userID'];
+
+        $entry = new Entry($this->db);
+
+        return $response->withJson($entry->getNameByUser($userID));
     });
 
     // Lägga in en ny entry
