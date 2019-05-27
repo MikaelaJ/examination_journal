@@ -1,6 +1,6 @@
 const views = { // Ett objekt
-  login: ['#loginFormTemplate', '#registerFormTemplate', '#allEntriesTemplate'],
-  loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#allEntriesTemplate'],
+  login: ['#loginFormTemplate', '#registerFormTemplate', '#allEntriesTemplate', '#allUsersBtnTemplate', '#allUsersTemplate'],
+  loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#allEntriesTemplate', '#allUsersBtnTemplate', '#allUsersTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate'],
   specificEntry:['#specificEntry']
@@ -47,12 +47,12 @@ let checkedIfLoggedIn = function () {
     console.log("res", res);
     if (res) {
       console.log("checkedIfLoggedIn");
-      renderView(views.loggedIn)
+      renderView(views.loggedIn);
       renderEntriesByUser();
       renderEntries();
       bindEvents()
     } else {
-      renderView(views.login)
+      renderView(views.login);
       renderEntries();
       bindEvents()
     }

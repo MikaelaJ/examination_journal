@@ -4,6 +4,7 @@ const bindEvents = () => {
     const registerForm = document.querySelector('#registerForm')
     const createEntryForm = document.querySelector("#createEntryForm")
     const updateEntryForm = document.getElementById("#updateEntry")
+    const allUsersBtn = document.getElementById("allUsersBtn")
     // const createEntryForm =  document.querySelector('#createEntryForm')
 
     if (logoutBtn) {
@@ -29,6 +30,12 @@ const bindEvents = () => {
     if (createEntryForm) {
         createEntryForm.addEventListener('click', event => {
             createEntry(event);
+        })
+    }
+
+    if (allUsersBtn) {
+        allUsersBtn.addEventListener('click', event => {
+            renderUsersBtn(event);
         })
     }
 
