@@ -30,11 +30,11 @@ return function ($app) {
   });
 
 
-  
+
   $app->get('api/search/{searchText}', function ($request, $response, $args) {
-    $userID = $args['searchText'];
+    $searchText = $args['searchText'];
     $search = new User($this->db);
 
-    return $response->withJson($search->searchDb());
+    return $response->withJson($search->searchDb($searchText));
   });
 };

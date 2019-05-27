@@ -64,7 +64,7 @@ let checkedIfLoggedIn = function () {
   })
 
 // fetch
-fetch('/users')
+fetch('/api/users')
   .then(response => { return response.json() })
   .then(data => {
     console.log(data)

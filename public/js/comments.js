@@ -14,7 +14,7 @@ function renderCommentsByEntry(entryID) {
       })
   }
 
-
+ 
   function getComment(data, comment) {
     for (let i = 0; i < data.length; i++) {
       const h3 = document.createElement('h3');
