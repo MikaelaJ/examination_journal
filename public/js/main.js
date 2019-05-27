@@ -3,7 +3,8 @@ const views = { // Ett objekt
   loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#allEntriesTemplate', '#allUsersBtnTemplate', '#allUsersTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate'],
-  specificEntry:['#specificEntry']
+  specificEntry:['#specificEntry'],
+  specificComment:['#specificComment']
 }
 // Nu behöver man en function som renderar ut dessa vyer
 function renderView(view) {
@@ -64,7 +65,7 @@ let checkedIfLoggedIn = function () {
   })
 
 // fetch
-fetch('/users')
+fetch('/api/users')
   .then(response => { return response.json() })
   .then(data => {
     console.log(data)
