@@ -55,4 +55,3 @@ let checkedIfLoggedIn = function () {
       renderEntries();
     }
   })
-
