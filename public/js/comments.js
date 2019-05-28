@@ -5,12 +5,10 @@ function renderCommentsByEntry(entryID) {
       if (response.ok) {
         return response.json();
       } else {
-        console.log("något blev fel");
-        return;
+        return false;
       }
     })
     .then(data => {
-      console.log("Här kommer data", data); //En array
       getComment(data, "comment");
     });
 }
@@ -29,7 +27,7 @@ function getComment(data, comment) {
     document.getElementById(comment).append(span);
 
     let commentID = data[i].commentID;
-    h3.addEventListener("click", function(e) {
+    h3.addEventListener("click", function (e) {
       // createdBy = userID Man ska bara kunna ändra comment när desssa är lika.
       checkedIfLoggedIn().then(isLoggedin => {
         if (isLoggedin) {
@@ -43,13 +41,8 @@ function getComment(data, comment) {
 
       const h3 = document.createElement("h2");
       const p = document.createElement("p");
-      h3.textContent =
-        data[i].createdAt +
-        " userID: " +
-        data[i].createdBy +
-        " entryID: " +
-        data[i].entryID;
-      p.textContent = data[i].content;
+      h3.textContent = `${data[i].createdAt} UserID: ${data[i].createdBy} EntryID: ${data[i].entryID}`;
+      p.textContent = `${data[i].content}`;
       document.getElementById("comment").append(h3);
       document.getElementById("comment").append(p);
     });
@@ -58,12 +51,11 @@ function getComment(data, comment) {
 
 function updateComment(commentID) {
   const updateBtn = document.querySelector("#updateCommentForm");
-  updateBtn.addEventListener("submit", function(e) {
+  updateBtn.addEventListener("submit", function (e) {
     e.preventDefault();
 
     putCommentToDb(commentID, updateBtn);
   });
-  console.log(commentID);
 }
 
 function putCommentToDb(commentID, elementID) {
@@ -78,16 +70,14 @@ function putCommentToDb(commentID, elementID) {
       return response.json();
     })
     .catch(error => {
-      console.error(error);
+      return error;
     });
 }
 
 function deleteComment(commentID) {
   const deleteCommentBtn = document.querySelector("#deleteCommentForm");
-
-  deleteCommentBtn.addEventListener("submit", function(e) {
+  deleteCommentBtn.addEventListener("submit", function (e) {
     e.preventDefault();
-
     const formData = new FormData(deleteCommentForm);
 
     fetch(`/api/comment/${commentID}`, {

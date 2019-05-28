@@ -18,9 +18,9 @@ class Entry extends Mapper
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getLatestEntries($number)
+    public function getLatestEntries()
     {
-        $statement = $this->db->prepare("SELECT entries.*, users.username FROM entries INNER JOIN users ON entries.userID = users.userID LIMIT {$number}");
+        $statement = $this->db->prepare("SELECT entries.*, users.username FROM entries INNER JOIN users ON entries.userID = users.userID LIMIT 20");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -1,7 +1,7 @@
 <template id="specificEntry">
-<h1>Inlägg</h1>
-<div id="entry"></div>
-<div id="comment"></div>
+  <h1>Inlägg</h1>
+  <div id="entry"></div>
+  <div id="comment"></div>
 
   <form method="post" id="deleteEntryForm">
     <button type="submit" id="deleteEntry">Delete entry</button>
@@ -13,7 +13,7 @@
     <input type="text" name="content" id="content" required>
     <button type="submit">Submit</button>
   </form>
-  
+
   <h2>Update Entry</h2>
   <form method="post" id="updateEntryForm">
     <label for="title">Title</label>

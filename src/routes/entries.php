@@ -12,8 +12,8 @@ return function ($app) {
     });
 
     // Hämtar de X senaste inläggen av alla användare
-    $app->get('/entries/latest/{nr}', function ($request, $response, $args) {
-        $number = $args['nr'];
+    $app->get('/api/entries/latest', function ($request, $response, $args) {
+        /* $number = $args['nr']; */
 
         $entry = new Entry($this->db);
 

@@ -3,9 +3,7 @@ const bindEvents = () => {
     const logoutBtn = document.getElementById('logoutBtn');
     const registerForm = document.querySelector('#registerForm')
     const createEntryForm = document.querySelector("#createEntryForm")
-    const updateEntryForm = document.getElementById("#updateEntry")
     const allUsersBtn = document.getElementById("allUsersBtn")
-    // const createEntryForm =  document.querySelector('#createEntryForm')
 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", event => {

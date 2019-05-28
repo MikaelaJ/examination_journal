@@ -9,7 +9,6 @@ function login(event) {
             renderView(views.loginError)
             return Error(response.statusText)
         } else {
-            console.log("inloggad");
             location.reload();
         }
     }).catch(error => {
