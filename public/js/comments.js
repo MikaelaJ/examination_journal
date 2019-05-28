@@ -14,7 +14,7 @@ function renderCommentsByEntry(entryID) {
       })
   }
 
-
+ 
   function getComment(data, comment) {
     for (let i = 0; i < data.length; i++) {
       const h3 = document.createElement('h3');
@@ -28,9 +28,19 @@ function renderCommentsByEntry(entryID) {
       document.getElementById("comment").append(p);
       document.getElementById("comment").append(span);
 
+      let commentID = data[i].commentID
       h3.addEventListener('click', function(e){
         renderView(views.specificComment);
-       // getComment(this.data); ?????
+        updateEntry(commentID);
+        renderCommentsByEntry(commentID);
+     
+         const h3 = document.createElement('h2');
+         const p = document.createElement('p');
+         h3.textContent = data[i].createdAt + " userID: " + data[i].userID + " entryID: " + data[i].entryID;
+         p.textContent = data[i].content;
+         document.getElementById("comment").append(h3);
+         document.getElementById("comment").append(p);
+
 
     });
 
