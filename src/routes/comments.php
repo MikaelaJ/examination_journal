@@ -19,16 +19,23 @@ return function ($app) {
         $commentID = $args['id'];
         $comment = new Comment($this->db);
 
-        $comment->deleteComment($commentID);
-        return $response->withJson([
-            'success' => true
-        ]);
+        // $a = $comment->deleteComment($commentID);
+        // var_dump($a);
+        // exit;
+
+        if ($comment->deleteComment($commentID)) {
+            return $response->withJson([
+                'success' => true
+            ]);
+        } else {
+            return $response->withStatus(401);
+        }
     });
 
     // Update Comment
     $app->post('/api/comment/{id}', function ($request, $response, $args) {
         $commentID = $args['id'];
-        $dataBody = $request->getParsedBody(); 
+        $dataBody = $request->getParsedBody();
         $comment = new Comment($this->db);
 
         $comment->updateComment($commentID, $dataBody['content']);

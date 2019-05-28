@@ -30,16 +30,18 @@ function getComment(data, comment) {
 
     let commentID = data[i].commentID
     h3.addEventListener('click', function (e) {
-      renderView(views.specificComment);
-      console.log("commentID", commentID);
+      // createdBy = userID Man ska bara kunna ändra comment när desssa är lika. 
+      checkedIfLoggedIn().then(isLoggedin => {
+        if (isLoggedin) {
+          renderView(views.specificComment);
+          updateComment(commentID);
+          deleteComment(commentID);
 
-      // let toggle = document.getElementById('toggleComment');
-      // console.log(toggle);
-      // toggle.classList.add('hide');
-
-      updateComment(commentID);
-      deleteComment(commentID);
-      // renderCommentsByEntry(commentID);
+        } else {
+          renderView(views.login);
+          console.log("OOOOPPPs you are not logged in");
+        }
+      })
 
       const h3 = document.createElement('h2');
       const p = document.createElement('p');
