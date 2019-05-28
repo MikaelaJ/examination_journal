@@ -10,7 +10,6 @@ function renderEntries() {
     })
 }
 
-
 /* -----------Render Entries By User (shown when logged in=------------- */
   function renderEntriesByUser() {
     fetch("/api/getPostsByUser")
