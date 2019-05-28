@@ -53,7 +53,7 @@ class Entry extends Mapper
             'userID' => $userID
         ]);
     }
-    
+
     public function deleteEntry($entryID)
     {
         $userID = $this->getUserIdByEntryId($entryID);
