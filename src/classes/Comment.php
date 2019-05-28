@@ -31,7 +31,7 @@ class Comment extends Mapper
     
     public function getAllComments($entryID)
     {
-        $statement = $this->db->prepare("SELECT content, createdAt, users.username FROM comments INNER JOIN users ON comments.createdBy = users.userID WHERE comments.entryID = :entryID;");
+        $statement = $this->db->prepare("SELECT content, createdAt, users.username FROM comments INNER JOIN users ON comments.createdBy = users.userID;");
         $statement->execute([
             ':entryID' => $entryID
         ]);
