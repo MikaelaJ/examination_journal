@@ -72,12 +72,12 @@ return function ($app) {
         $dataBody = $request->getParsedBody(); 
         $newEntry = new Entry($this->db);
 
-        $newEntry->updateEntry($entryID, $dataBody['title'], $dataBody['content']);
-        return $response->withJson([
-            'success' => true
-        ]);
+             if ($newEntry->updateEntry ($entryID, $dataBody['title'], $dataBody['content'])) {
+                return $response->withJson([
+                    'success' => true
+                ]);
+            } else {
+                return $response->withStatus(401);
+            }
     });
 }; 
-
-
-

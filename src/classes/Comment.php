@@ -48,7 +48,7 @@ class Comment extends Mapper
             $statement->execute([
                 'content' => $content,
                 'commentID' => $commentID
-            ]);
+            ]); 
 
             return true;
         } else {

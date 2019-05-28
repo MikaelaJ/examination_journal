@@ -72,11 +72,19 @@ class Entry extends Mapper
 
     public function updateEntry($entryID, $title, $content) // $content $title will come from a variable that comes from JS
     {
+        $userID = $this->getUserIdByEntryId($entryID);
+
+        if ($userID === $_SESSION['userID']) {
         $statement = $this->db->prepare("UPDATE entries SET title=:title, content=:content WHERE entryID = :entryID;");
         $statement->execute([
             'entryID' => $entryID,
             'title' => $title,
             'content' => $content
         ]);
+        return true;
+         }else{
+             return false;
+         }
     }
 };
+
