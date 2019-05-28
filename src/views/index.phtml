@@ -7,11 +7,38 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><?= $title ?></title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 
 <body>
+  <header>
+    <nav>
 
-<?php
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="">Show all friends</a></li>
+          <li><a href="">Register</a></li>
+          <li><a href="">Login</a></li>
+        </ul>
+      </div>
+
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-content">
+      
+      <h1>WELCOME TO OUR BLOG</h1>
+      <h2>REGISTER TODAY FOR FREE</h2>
+
+      <button class="btn">Hej</button>
+    </div>
+  </div>
+
+  <?php
 include('../src/views/templates/loggedInTemplate.php');
 include('../src/views/templates/loginErrorTemplate.php');
 include('../src/views/templates/loginFormTemplate.php');
@@ -27,12 +54,42 @@ include('../src/views/templates/specificComment.php');
 include('../src/views/templates/toggleTemplate.php');
 ?>
   <div class="container">
-    <header>
-      <h1><?= $title ?></h1>
-    </header>
+    <h1><?= $title ?></h1>
     <main>
     </main>
   </div>
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+
+        <div class="col l4 s12">
+          <h5 class="white-text">Examination</h5>
+          <ul>
+            <li>Journal</li>
+          </ul>
+        </div>
+        <div class="col l4 s12">
+          <h5 class="white-text">Medlemmar</h5>
+          <ul>
+            <li>Emma Hägg</li>
+            <li>Mikaela Johansson</li>
+            <li>Ellinor Stenhaug</li>
+          </ul>
+        </div>
+        <div class="col l4 s12">
+          <h5 class="white-text">Gruppnamn</h5>
+          <ul>
+            <li>Untouchaballs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+
+    </div>
+  </footer>
+  <script type="text/javascript" src="js/bindevents.js"></script>
+
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/register.js"></script>
   <script type="text/javascript" src="js/login.js"></script>
@@ -42,7 +99,9 @@ include('../src/views/templates/toggleTemplate.php');
   <script type="text/javascript" src="js/users.js"></script>
   <script type="text/javascript" src="js/createComment.js"></script>
   <script type="text/javascript" src="js/comments.js"></script>
-  <script type="text/javascript" src="js/bindevents.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </body>
 

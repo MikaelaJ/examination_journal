@@ -5,9 +5,9 @@ function logout(event) {
         .then(data => {
             if (!data.ok) {
                 renderView(views.login)
-                return
-            } else {
                 return Error(data.statusText)
+            } else {
+                location.reload();
             }
         })
 }

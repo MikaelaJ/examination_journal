@@ -11,6 +11,8 @@ function register(event) {
 
         } else {
             renderView(views.registered);
+
+
         }
     })
     .catch(error => {

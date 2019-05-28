@@ -10,6 +10,7 @@ function login(event) {
             return Error(response.statusText)
         } else {
             console.log("inloggad");
+            location.reload();
         }
     }).catch(error => {
         console.error(error);
