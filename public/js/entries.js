@@ -63,8 +63,8 @@ function getTitle(data, elementId) {
           const p = document.createElement('p');
           const span = document.createElement('span');
 
-          h2.textContent = `Title: ${data[i].title}`;
-          span.textContent = `Content: ${data[i].content}`;
+          h2.textContent = data[i].title;
+          span.textContent = data[i].content;
 
           document.getElementById("entry").append(h2);
           document.getElementById("entry").append(span);
