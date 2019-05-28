@@ -3,8 +3,8 @@
     <form method="post" id="createEntryForm">
       <label for="title">Title</label>
       <input type="text" name="title" id="title">
-      <label for="content">content:</label>
+      <label for="content">Content:</label>
       <input type="text" name="content" id="content">
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn waves-effect waves-light">Submit</button>
     </form>
 </template>

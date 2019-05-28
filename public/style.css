@@ -1,5 +1,5 @@
 body {
-  background: #ecf0f1;
+  background: white;
   margin:0;
   padding:0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -18,9 +18,37 @@ body {
 h1 {
   text-align: center;
 }
+#entriesByMe, 
+#entries {
+  background-color:#fefaf8;
+  padding: 10px 30px;
+}
+#entriesByMe h2, 
+#entries h2{
+  font-size:2rem;
+}
+#entriesByMe h2:hover,
+#entries h2:hover{
+  cursor:pointer;
+}
+
+#createEntryForm{
+  background-color:#fefaf8;
+  padding: 30px 30px 10px 30px;
+} 
+
+#createEntryForm label{
+  font-size:1.3rem;
+} 
+
+#entriesByMe span,
+#entries span{
+  font-size:0.7rem;
+  padding:10px;
+}
+
 
 main {
-  max-width: 40em;
   padding: 1%;
 }
 
@@ -37,6 +65,8 @@ nav ul li a {
 }
 
 .hero {
+  position: relative;
+  top: -40px;
   height:70vh;
   width:100%;
   background: url('https://images.unsplash.com/photo-1486394873570-0dcc34a874c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80');

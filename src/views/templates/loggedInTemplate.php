@@ -1,11 +1,8 @@
 <template id="loggedInTemplate">
-  <h1>Hej
-    <?php
-    echo $_SESSION['username'];
-    ?></h1>
-  <h1>Alla mina inlägg</h1>
+ 
+  <h2>Alla mina inlägg</h2>
   <div id="entriesByMe">
     
   </div>
-  <button type="submit" id="logoutBtn">Log out</button>
+  <button type="submit" id="logoutBtn" class=" btn waves-effect waves-light">Log out</button>
 </template>

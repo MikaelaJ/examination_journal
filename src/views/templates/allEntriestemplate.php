@@ -1,5 +1,5 @@
 <template id="allEntriesTemplate">
-<h1>Alla våra inlägg</h1>
+<h2>Alla våra inlägg</h2>
 <div id="entries"></div>
 
 </template>

@@ -28,20 +28,19 @@ function renderEntriesByUser() {
 
 function getTitle(data, elementId) {
   for (let i = 0; i < data.length; i++) {
-    const p = document.createElement('p');
+    const createdBySpan = document.createElement('span');
     const span = document.createElement('span');
     const h2 = document.createElement('h2');
+    const hr = document.createElement('hr');
 
-    h2.textContent = ` title: ${data[i].title}`;
-    p.textContent = ` ${data[i].username} ${data[i].userID}`;
-    span.textContent = `${data[i].createdAt}`;
+    h2.textContent = data[i].title;
+    createdBySpan.textContent = `Made by: ${data[i].username}`;
+    span.textContent = `Posted: ${data[i].createdAt}`;
 
     document.getElementById(elementId).append(h2);
-    document.getElementById(elementId).append(p);
     document.getElementById(elementId).append(span);
-
-    /* p.textContent = "title: " + data[i].title + " userid: " + data[i].userID + " createdAt " + data[i].createdAt; */
-    document.getElementById(elementId).append(p);
+    document.getElementById(elementId).append(createdBySpan);
+    document.getElementById(elementId).append(hr);
 
 
     h2.addEventListener('click', function (e) {
