@@ -1,1 +1,0 @@
-//skicka till createComment sen

@@ -20,18 +20,17 @@ class Comment extends Mapper
         ]);
         
     }
-    public function updateComment($commentID) // $content will come from a variable that comes from JS
+    public function updateComment($commentID, $content) // $content will come from a variable that comes from JS
     {
-        $statement = $this->db->prepare("UPDATE comments SET content='Nu heeeeeeeej har jag ändrat kommentar 4 via postman, tjhoooooo' WHERE commentID = $commentID;");
+        $statement = $this->db->prepare("UPDATE comments SET content=:content WHERE commentID = $commentID;");
         $statement->execute([
             'content' => $content
         ]);
-        
     }
     
     public function getAllComments($entryID)
     {
-        $statement = $this->db->prepare("SELECT content, createdAt, users.username FROM comments INNER JOIN users ON comments.createdBy = users.userID WHERE comments.entryID = :entryID;");
+        $statement = $this->db->prepare("SELECT comments.*, users.username FROM comments INNER JOIN users ON comments.createdBy = users.userID WHERE comments.entryID = :entryID;");
         $statement->execute([
             ':entryID' => $entryID
         ]);

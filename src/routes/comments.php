@@ -15,7 +15,7 @@ return function ($app) {
     })->add($auth);
 
     // Delete Comment
-    $app->delete('/comment/{id}', function ($request, $response, $args) {
+    $app->delete('/api/comment/{id}', function ($request, $response, $args) {
         $commentID = $args['id'];
         $comment = new Comment($this->db);
 
@@ -26,11 +26,13 @@ return function ($app) {
     });
 
     // Update Comment
-    $app->put('/comment/{id}', function ($request, $response, $args) {
+    $app->post('/api/comment/{id}', function ($request, $response, $args) {
         $commentID = $args['id'];
+        $dataBody = $request->getParsedBody(); 
         $comment = new Comment($this->db);
 
-        $comment->updateComment($commentID);
+        $comment->updateComment($commentID, $dataBody['content']);
+
         return $response->withJson([
             'success' => true
         ]);
