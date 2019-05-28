@@ -10,7 +10,6 @@ function register(event) {
             return Error(response.statusText)
 
         } else {
-            console.log("response", response);
             renderView(views.registered);
         }
     })
