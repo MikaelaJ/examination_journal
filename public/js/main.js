@@ -49,14 +49,14 @@ let checkedIfLoggedIn = function () {
     if (res) {
       renderView(views.loggedIn);
       renderEntriesByUser();
-      renderCommentsByEntry();
+      // renderCommentsByEntry();
       renderEntries();
       // bindEvents();
 
     } else {
       renderView(views.login);
       renderEntries();
-      renderCommentsByEntry();
+      // renderCommentsByEntry();
       // bindEvents();
     }
   })
