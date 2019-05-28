@@ -15,7 +15,7 @@ return [
       'host' => 'localhost:8889',
       'user' => 'root',
       'pass' => 'root',
-      'dbname' => 'journal'
+      'dbname' => 'api'
     ]
   ],
 ];
