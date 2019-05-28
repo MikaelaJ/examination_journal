@@ -10,7 +10,7 @@ function createComment(event, entryID) {
         return response.json() 
     })
     .then( res => {
-        return res;
+        location.reload();
     })
     .catch(error => {
         console.error(error);

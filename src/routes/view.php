@@ -7,7 +7,7 @@ return function ($app) {
 
     $title = $_SESSION['username'];
     return $this->renderer->render($response, 'index.phtml', [
-      'title' => "Hej {$title}"
+      'title' => "{$title}"
     ]);
   });
 };

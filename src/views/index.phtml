@@ -17,11 +17,11 @@
     <nav>
 
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
+        <a href="" class="brand-logo">Home</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="">Show all friends</a></li>
-          <li><a href="">Register</a></li>
-          <li><a href="">Login</a></li>
+          <li><a href="#showAllUsers">Show all friends</a></li>
+          <li><a href="#allOurEntries">Show all posts</a></li>
+          
         </ul>
       </div>
 
@@ -32,9 +32,8 @@
     <div class="hero-content">
       
       <h1>WELCOME TO OUR BLOG</h1>
-      <h2>REGISTER TODAY FOR FREE</h2>
+      <h1><?= $title ?></h1>
 
-      <button class="btn">Hej</button>
     </div>
   </div>
 
@@ -46,15 +45,14 @@ include('../src/views/templates/registeredTemplate.php');
 include('../src/views/templates/registerFormTemplate.php');
 include('../src/views/templates/allEntriesTemplate.php');
 include('../src/views/templates/createEntryTemplate.php');
-include('../src/views/templates/updateEntryTemplate.php');
 include('../src/views/templates/specificEntry.php');
-include('../src/views/templates/allUsersBtnTemplate.php');
 include('../src/views/templates/allUsersTemplate.php');
+include('../src/views/templates/allUsersBtnTemplate.php');
 include('../src/views/templates/specificComment.php');
 include('../src/views/templates/toggleTemplate.php');
 ?>
   <div class="container">
-    <h1><?= $title ?></h1>
+    
     <main>
     </main>
   </div>

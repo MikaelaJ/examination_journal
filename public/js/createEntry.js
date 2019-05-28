@@ -5,11 +5,10 @@ function createEntry(event) {
         method: 'POST',
         body: formData
     }).then(response => {
-        console.log(response);
         return response.json() 
     })
     .then(res => {
-        console.log(res);
+        location.reload();
     })
     .catch(error => {
         console.error(error);

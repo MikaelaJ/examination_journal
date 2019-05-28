@@ -1,11 +1,10 @@
 /* -----------Render All Entries (show on first page and when logged in)------------- */
 function renderEntries() {
-  fetch('/entries')
+  fetch('/api/entries/latest')
     .then(response => {
       return response.json()
     })
     .then(data => {
-      // renderView(views.allEntries)
       getTitle(data, "entries");
     })
 }
@@ -21,7 +20,6 @@ function renderEntriesByUser() {
       };
     })
     .then(data => {
-      // renderView(views.allEntries)
       getTitle(data, "entriesByMe");
     })
 }
@@ -67,7 +65,6 @@ function getTitle(data, elementId) {
 
           h2.textContent = `Title: ${data[i].title}`;
           span.textContent = `Content: ${data[i].content}`;
-          p.textContent = `Comment created: ${data[i].createdAt} User ID: ${data[i].userID} Entry ID: ${data[i].entryID}`;
 
           document.getElementById("entry").append(h2);
           document.getElementById("entry").append(span);
@@ -98,7 +95,6 @@ function updateEntry(entryID) {
 
     putEntryToDb(entryID, updateBtn)
   })
-  console.log(entryID);
 }
 
 function putEntryToDb(entryID, elementID) {
@@ -108,11 +104,10 @@ function putEntryToDb(entryID, elementID) {
     method: 'POST',
     body: formData
   }).then(response => {
-    console.log("resp1", response);
     return response.json()
   })
     .then(res => {
-      console.log("resp2", res);
+      location.reload();
       return res;
     })
     .catch(error => {
@@ -130,8 +125,10 @@ function deleteEntry(entryID) {
       method: 'DELETE',
       body: formData
     }).then(response => {
-      console.log("resp1", response);
       return response.json()
+    })
+    .then(res => {
+      location.reload();
     })
       .catch(error => {
         console.error(error);

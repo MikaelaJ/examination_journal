@@ -8,11 +8,8 @@ function register(event) {
         if (!response.ok) {
             renderView(views.registerError)
             return Error(response.statusText)
-
         } else {
             renderView(views.registered);
-
-
         }
     })
     .catch(error => {

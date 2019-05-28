@@ -1,6 +1,6 @@
 const views = { // Ett objekt
-  login: ['#loginFormTemplate', '#registerFormTemplate', '#allEntriesTemplate', '#allUsersBtnTemplate', '#allUsersTemplate'],
-  loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#allEntriesTemplate', '#allUsersBtnTemplate', '#allUsersTemplate'],
+  login: ['#loginFormTemplate', '#registerFormTemplate', '#allEntriesTemplate', '#allUsersTemplate', '#allUsersBtnTemplate'],
+  loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#allEntriesTemplate', '#allUsersTemplate', '#allUsersBtnTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate'],
   specificEntry:['#specificEntry'],
@@ -35,8 +35,6 @@ let checkedIfLoggedIn = function () {
       return response.json();
     }
     else{
-      console.log("Något gick fel");
-      //Error TODO
       return;
     }
   })
@@ -46,23 +44,15 @@ let checkedIfLoggedIn = function () {
 }
 
   checkedIfLoggedIn().then(res => {
+
     if (res) {
       renderView(views.loggedIn);
       renderEntriesByUser();
-      // renderCommentsByEntry();
       renderEntries();
-      // bindEvents();
 
     } else {
       renderView(views.login);
       renderEntries();
-      // renderCommentsByEntry();
-      // bindEvents();
     }
   })
 
-// fetch
-fetch('/api/users')
-  .then(response => { return response.json() })
-  .then(data => {
-  })

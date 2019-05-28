@@ -1,12 +1,12 @@
 body {
   background: white;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .hide {
-  display:none;
+  display: none;
 }
 
 .container {
@@ -18,33 +18,63 @@ body {
 h1 {
   text-align: center;
 }
-#entriesByMe, 
+.brand-logo {
+  color:black !important;
+  padding: 0 20px !important;
+}
+.brand-logo:hover {
+  color:teal !important;
+  cursor: pointer;
+}
+
+#comment {
+  background-color:#f0edf0;
+  padding:10px 30px;
+}
 #entries {
-  background-color:#fefaf8;
+  background-color: #f0edf0;
   padding: 10px 30px;
 }
-#entriesByMe h2, 
-#entries h2{
-  font-size:2rem;
+
+#entriesByMe {
+  background-color: #fefaf8;
+  padding: 10px 30px;
 }
+
+#entriesByMe h2,
+#entries h2, 
+#comment h3 {
+  font-size: 2rem;
+}
+
 #entriesByMe h2:hover,
-#entries h2:hover{
-  cursor:pointer;
+#entries h2:hover,
+#comment p:hover {
+  cursor: pointer;
 }
 
-#createEntryForm{
-  background-color:#fefaf8;
+#createEntryForm {
+  background-color: #fefaf8;
   padding: 30px 30px 10px 30px;
-} 
+}
 
-#createEntryForm label{
-  font-size:1.3rem;
-} 
+.py-2{
+  padding: 10px 0;
+}
+
+#createEntryForm label {
+  font-size: 1.3rem;
+}
 
 #entriesByMe span,
 #entries span{
-  font-size:0.7rem;
-  padding:10px;
+  
+  font-size: 0.7rem;
+  padding: 10px;
+}
+#comment span {
+  font-size: 0.7rem;
+
 }
 
 
@@ -57,28 +87,33 @@ h1 {
 }
 
 nav {
-  background-color:white !important;
+  background-color: white !important;
 }
 
 nav ul li a {
-  color:black;
+  color: black;
 }
 
 .hero {
   position: relative;
   top: -40px;
-  height:70vh;
-  width:100%;
+  height: 70vh;
+  width: 100%;
   background: url('https://images.unsplash.com/photo-1486394873570-0dcc34a874c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80');
 }
 
 .hero-content {
   position: relative;
-  top:100px;
+  top: 100px;
   z-index: 3;
 }
 
-.hero-content h2{
-text-align:center;
-font-size:3rem;
+.hero-content h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+#allUsersBtnForm {
+  width: 100%;
+  padding: 20px;
 }
