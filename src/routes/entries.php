@@ -57,14 +57,16 @@ return function ($app) {
         $entryID = $args['id'];
         $entry = new Entry($this->db);
 
-        $entry->deleteEntry($entryID);
-        return $response->withJson([
-            'success' => true
-        ]);
+        if ($entry->deleteEntry($entryID)) {
+            return $response->withJson([
+                'success' => true
+            ]);
+        } else {
+            return $response->withStatus(401);
+        }
     }) ;
 
     // Update Entry
-
     $app->post('/api/entry/{id}', function ($request, $response, $args) {
         $entryID = $args['id'];
         $dataBody = $request->getParsedBody(); 

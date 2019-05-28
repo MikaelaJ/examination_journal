@@ -39,7 +39,6 @@ function getComment(data, comment) {
 
         } else {
           renderView(views.login);
-          console.log("OOOOPPPs you are not logged in");
         }
       })
 

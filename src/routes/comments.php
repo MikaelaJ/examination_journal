@@ -19,10 +19,6 @@ return function ($app) {
         $commentID = $args['id'];
         $comment = new Comment($this->db);
 
-        // $a = $comment->deleteComment($commentID);
-        // var_dump($a);
-        // exit;
-
         if ($comment->deleteComment($commentID)) {
             return $response->withJson([
                 'success' => true
