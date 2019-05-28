@@ -17,15 +17,15 @@ class Comment extends Mapper
         $statement->execute([
             'content' => $content,
             'createdBy' =>  $_SESSION['userID'],
-            'entryID' => $entryID /* $_SESSION['entryID'] */
+            'entryID' => $entryID 
         ]);
     }
 
     public function deleteComment($commentID)
     {
-        $createdBy = $this-> getCommentAuthorByCommentId($commentID);
+        $createdBy = $this->getCommentAuthorByCommentId($commentID);
 
-        if($createdBy === $_SESSION['userID']) {
+        if ($createdBy === $_SESSION['userID']) {
             $statement = $this->db->prepare("DELETE FROM comments WHERE commentID = :commentID");
             $statement->execute([
                 'commentID' => $commentID
@@ -35,14 +35,26 @@ class Comment extends Mapper
         } else {
             return false;
         }
-        
     }
+
     public function updateComment($commentID, $content) // $content will come from a variable that comes from JS
     {
-        $statement = $this->db->prepare("UPDATE comments SET content=:content WHERE commentID = $commentID;");
-        $statement->execute([
-            'content' => $content
-        ]);
+
+        $createdBy = $this-> getCommentAuthorByCommentId($commentID);
+
+
+        if($createdBy === $_SESSION['userID']){
+            $statement = $this->db->prepare("UPDATE comments SET content=:content WHERE commentID = :commentID");
+            $statement->execute([
+                'content' => $content,
+                'commentID' => $commentID
+            ]); 
+
+            return true;
+        } else {
+            return false;
+        }
+
     }
     
     public function getAllComments($entryID)

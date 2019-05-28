@@ -41,5 +41,4 @@ const bindEvents = () => {
             renderUsersBtn(event);
         })
     }
-
 }
