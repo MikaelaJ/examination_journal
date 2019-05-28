@@ -66,9 +66,3 @@ fetch('/api/users')
   .then(response => { return response.json() })
   .then(data => {
   })
-
-/* fetch ('/entries')
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-  }) */
