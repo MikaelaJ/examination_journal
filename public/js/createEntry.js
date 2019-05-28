@@ -1,15 +1,15 @@
 function createEntry(event) {
     event.preventDefault();
-    const formData = new FormData(createEntryForm)
-    let test = formData.get('title')
+    const formData = new FormData(createEntryForm);
     fetch('/api/createEntry', {
         method: 'POST',
         body: formData
     }).then(response => {
+        console.log(response);
         return response.json() 
     })
-    .then( res => {
-        // console.log(res);
+    .then(res => {
+        console.log(res);
     })
     .catch(error => {
         console.error(error);

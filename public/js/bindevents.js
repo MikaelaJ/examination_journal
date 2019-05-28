@@ -28,7 +28,10 @@ const bindEvents = () => {
     }
 
     if (createEntryForm) {
-        createEntryForm.addEventListener('click', event => {
+        console.log(createEntryForm);
+        createEntryForm.addEventListener('submit', event => {
+            event.preventDefault();
+            console.log("Hej");
             createEntry(event);
         })
     }

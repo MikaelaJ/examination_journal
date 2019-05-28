@@ -51,13 +51,13 @@ let checkedIfLoggedIn = function () {
       renderEntriesByUser();
       renderCommentsByEntry();
       renderEntries();
-      bindEvents()
+      // bindEvents();
 
     } else {
       renderView(views.login);
       renderEntries();
       renderCommentsByEntry();
-      bindEvents()
+      // bindEvents();
     }
   })
 

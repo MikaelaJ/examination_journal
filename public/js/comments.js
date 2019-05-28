@@ -10,6 +10,7 @@ function renderCommentsByEntry(entryID) {
         };
       })
       .then(data => {
+        console.log("Här kommer data", data); //En array 
         getComment(data, "commentsByEntry");
       })
   }
