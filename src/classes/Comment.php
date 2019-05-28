@@ -39,11 +39,26 @@ class Comment extends Mapper
     }
     public function updateComment($commentID, $content) // $content will come from a variable that comes from JS
     {
-        $statement = $this->db->prepare("UPDATE comments SET content=:content WHERE commentID = $commentID;");
-        $statement->execute([
-            'content' => $content
-        ]);
+
+        $createdBy = $this-> getCommentAuthorByCommentId($commentID);
+
+
+        if($createdBy === $_SESSION['userID']){
+            $statement = $this->db->prepare("UPDATE comments SET content=:content WHERE commentID = :commentID");
+            $statement->execute([
+                'content' => $content,
+                'commentID' => $commentID
+            ]);
+
+            return true;
+        } else {
+            return false;
+        }
+
     }
+
+
+
     
     public function getAllComments($entryID)
     {

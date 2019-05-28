@@ -38,11 +38,15 @@ return function ($app) {
         $dataBody = $request->getParsedBody();
         $comment = new Comment($this->db);
 
-        $comment->updateComment($commentID, $dataBody['content']);
 
-        return $response->withJson([
-            'success' => true
-        ]);
+     //   $comment->updateComment($commentID, $dataBody['content']);
+        if ($comment->updateComment($commentID, $dataBody['content'])) {
+            return $response->withJson([
+                'success' => true
+            ]);
+        } else {
+            return $response->withStatus(401);
+        }
     });
 
     //Hämta en kommentarer till varje inlägg
