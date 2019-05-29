@@ -12,8 +12,8 @@ return function ($app) {
     });
 
     // Hämtar de X senaste inläggen av alla användare
-    $app->get('/api/entries/latest', function ($request, $response, $args) {
-        /* $number = $args['nr']; */
+    $app->get('/api/entries/{nr}', function ($request, $response, $args) {
+        $number = $args['nr']; 
 
         $entry = new Entry($this->db);
 
@@ -79,5 +79,25 @@ return function ($app) {
             } else {
                 return $response->withStatus(401);
             }
+    });
+
+    $app->post('/api/entry/newLike/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
+        
+        $newLike = new Entry($this->db);
+        $newLike->updateLike($entryID);
+        return $response->withJson([
+            'success' => true
+        ]);
+    });
+
+    $app->post('/api/entry/showLikes/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
+        
+        $newLike = new Entry($this->db);
+        $newLike->showLikes($entryID);
+        return $response->withJson([
+            'success' => true
+        ]);
     });
 }; 

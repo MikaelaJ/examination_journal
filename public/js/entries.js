@@ -1,6 +1,15 @@
+let page = 1;
+let offsetNr = 0;
+
+function showTwentyNextEntries() {
+  page++;
+  offsetNr = (page - 1) * 20;
+  renderEntries();
+}
+
 /* -----------Render All Entries (show on first page and when logged in)------------- */
 function renderEntries() {
-  fetch('/api/entries/latest')
+  fetch(`/api/entries/${offsetNr}`)
     .then(response => {
       return response.json()
     })
@@ -26,6 +35,16 @@ function renderEntriesByUser() {
 
 function getTitle(data, elementId) {
   for (let i = 0; i < data.length; i++) {
+    // let like = `
+    //   <button type="submit" data-entryID='${data[i].entryID} class="btn">Like</button>
+    // `
+    // let likeDiv = document.createElement('div');
+    // likeDiv.id = "test";
+    // console.log(likeDiv);
+    // likeDiv.innerHTML = like;
+
+
+
     const createdBySpan = document.createElement('span');
     const span = document.createElement('span');
     const h2 = document.createElement('h2');
@@ -38,6 +57,7 @@ function getTitle(data, elementId) {
     document.getElementById(elementId).append(h2);
     document.getElementById(elementId).append(span);
     document.getElementById(elementId).append(createdBySpan);
+    // document.getElementById(elementId).append(likeDiv);
     document.getElementById(elementId).append(hr);
 
 
@@ -101,11 +121,11 @@ function putEntryToDb(entryID, elementID) {
   const formData = new FormData(elementID)
 
   fetch(`/api/entry/${entryID}`, {
-    method: 'POST',
-    body: formData
-  }).then(response => {
-    return response.json()
-  })
+      method: 'POST',
+      body: formData
+    }).then(response => {
+      return response.json()
+    })
     .then(res => {
       location.reload();
       return res;
@@ -122,14 +142,14 @@ function deleteEntry(entryID) {
 
     const formData = new FormData(deleteEntryForm)
     fetch(`/api/entry/${entryID}`, {
-      method: 'DELETE',
-      body: formData
-    }).then(response => {
-      return response.json()
-    })
-    .then(res => {
-      location.reload();
-    })
+        method: 'DELETE',
+        body: formData
+      }).then(response => {
+        return response.json()
+      })
+      .then(res => {
+        location.reload();
+      })
       .catch(error => {
         console.error(error);
       })

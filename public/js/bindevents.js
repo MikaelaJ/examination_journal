@@ -1,9 +1,11 @@
 const bindEvents = () => {
     const loginForm = document.querySelector('#loginForm');
     const logoutBtn = document.getElementById('logoutBtn');
-    const registerForm = document.querySelector('#registerForm')
-    const createEntryForm = document.querySelector("#createEntryForm")
-    const allUsersBtn = document.getElementById("allUsersBtn")
+    const registerForm = document.querySelector('#registerForm');
+    const createEntryForm = document.querySelector("#createEntryForm");
+    const allUsersBtn = document.getElementById("allUsersBtn");
+    const showTwentyEntriesBtn = document.getElementById("showTwentyEntries");
+    const likeBtn = document.getElementById("likeBtnForm");
 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", event => {
@@ -37,6 +39,16 @@ const bindEvents = () => {
     if (allUsersBtn) {
         allUsersBtn.addEventListener('click', event => {
             renderUsersBtn(event);
+        })
+    }
+    if (showTwentyEntriesBtn) {
+        showTwentyEntriesBtn.addEventListener('click', event => {
+            showTwentyNextEntries(event);
+        })
+    }
+    if (likeBtn) {
+        likeBtn.addEventListener('submit', event => {
+            updateLikes(event);
         })
     }
 }
