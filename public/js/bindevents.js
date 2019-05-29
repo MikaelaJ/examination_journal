@@ -5,7 +5,8 @@ const bindEvents = () => {
     const createEntryForm = document.querySelector("#createEntryForm");
     const allUsersBtn = document.getElementById("allUsersBtn");
     const showTwentyEntriesBtn = document.getElementById("showTwentyEntries");
-    const likeBtn = document.getElementById("likeBtnForm");
+    // const likeBtn = document.getElementById("likeBtnForm");
+    const likeBtn = document.querySelector('button').getAttribute('data-entryid')
 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", event => {
@@ -48,7 +49,8 @@ const bindEvents = () => {
     }
     if (likeBtn) {
         likeBtn.addEventListener('submit', event => {
-            updateLikes(event);
+            console.log(likeBtn);
+            // updateLikes(event);
         })
     }
 }

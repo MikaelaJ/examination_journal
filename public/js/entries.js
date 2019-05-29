@@ -35,15 +35,10 @@ function renderEntriesByUser() {
 
 function getTitle(data, elementId) {
   for (let i = 0; i < data.length; i++) {
-    // let like = `
-    //   <button type="submit" data-entryID='${data[i].entryID} class="btn">Like</button>
-    // `
-    // let likeDiv = document.createElement('div');
-    // likeDiv.id = "test";
-    // console.log(likeDiv);
-    // likeDiv.innerHTML = like;
 
-
+    const likeBtn = document.createElement('button');
+    likeBtn.textContent = "Like";
+    likeBtn.dataset.entryid = data[i].entryID;
 
     const createdBySpan = document.createElement('span');
     const span = document.createElement('span');
@@ -57,7 +52,7 @@ function getTitle(data, elementId) {
     document.getElementById(elementId).append(h2);
     document.getElementById(elementId).append(span);
     document.getElementById(elementId).append(createdBySpan);
-    // document.getElementById(elementId).append(likeDiv);
+    document.getElementById(elementId).append(likeBtn);
     document.getElementById(elementId).append(hr);
 
 
