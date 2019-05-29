@@ -1,9 +1,11 @@
 const bindEvents = () => {
     const loginForm = document.querySelector('#loginForm');
     const logoutBtn = document.getElementById('logoutBtn');
-    const registerForm = document.querySelector('#registerForm')
-    const createEntryForm = document.querySelector("#createEntryForm")
-    const allUsersBtn = document.getElementById("allUsersBtn")
+    const registerForm = document.querySelector('#registerForm');
+    const createEntryForm = document.querySelector("#createEntryForm");
+    const allUsersBtn = document.getElementById("allUsersBtn");
+    const searchValueForm = document.getElementById('searchValueForm');
+
 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", event => {
@@ -39,4 +41,10 @@ const bindEvents = () => {
             renderUsersBtn(event);
         })
     }
+
+    if (searchValueForm) {
+        searchValueForm.addEventListener('submit', event => {
+            apiSearch(event);
+        })
+        }
 }

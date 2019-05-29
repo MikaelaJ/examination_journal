@@ -104,7 +104,7 @@ function putEntryToDb(entryID, elementID) {
     method: 'POST',
     body: formData
   }).then(response => {
-    return response.json()
+    return response.json();
   })
     .then(res => {
       location.reload();
@@ -134,4 +134,33 @@ function deleteEntry(entryID) {
         console.error(error);
       })
   })
+}
+
+/* ______________________SEARCH FUNCTION______________________ */
+
+function apiSearch(event) {
+  event.preventDefault();
+ console.log("inne i apiSearch");
+ const formData = new FormData(searchValueForm)
+  let value = formData.get("searchString");
+    fetch(`/api/entry/search/${value}`, {
+      method: 'POST'
+      /* body: formData */
+    }).then(response => {
+      return response.json()
+    })
+      .then(value => {
+        search(value);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }
+
+
+function search(data){
+  data.forEach(data => {
+    console.log(data)
+    
+  });
 }

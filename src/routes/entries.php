@@ -80,4 +80,12 @@ return function ($app) {
                 return $response->withStatus(401);
             }
     });
+
+    // Search function
+    $app->post('/api/entry/search/{value}', function ($request, $response, $args) {
+        $searchValue = $args['value'];
+        // $nameLike +="%";
+        $findValue = new Entries($this->db);
+        return $response->withJson($findValue->getValueBySearch($searchValue));
+    });
 }; 

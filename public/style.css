@@ -13,6 +13,9 @@ body {
   max-width: 1000px;
   margin: 0px auto 0px auto;
 }
+.input-field{
+  width: 30%;
+}
 
 
 h1 {

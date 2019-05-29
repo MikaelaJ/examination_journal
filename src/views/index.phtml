@@ -21,7 +21,6 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#showAllUsers">Show all friends</a></li>
           <li><a href="#allOurEntries">Show all posts</a></li>
-          
         </ul>
       </div>
 
@@ -30,29 +29,36 @@
 
   <div class="hero">
     <div class="hero-content">
-      
+
       <h1>WELCOME TO OUR BLOG</h1>
       <h1><?= $title ?></h1>
+      <form method="POST" id="searchValueForm">
+        <div class="input-field">
+          <input type="search" name="searchString" required>
+          <label for="search">Search</label>
+          <button type="submit">Search</button>
+        </div>
+      </form>
 
     </div>
   </div>
 
   <?php
-include('../src/views/templates/loggedInTemplate.php');
-include('../src/views/templates/loginErrorTemplate.php');
-include('../src/views/templates/loginFormTemplate.php');
-include('../src/views/templates/registeredTemplate.php');
-include('../src/views/templates/registerFormTemplate.php');
-include('../src/views/templates/allEntriesTemplate.php');
-include('../src/views/templates/createEntryTemplate.php');
-include('../src/views/templates/specificEntry.php');
-include('../src/views/templates/allUsersTemplate.php');
-include('../src/views/templates/allUsersBtnTemplate.php');
-include('../src/views/templates/specificComment.php');
-include('../src/views/templates/toggleTemplate.php');
-?>
+  include('../src/views/templates/loggedInTemplate.php');
+  include('../src/views/templates/loginErrorTemplate.php');
+  include('../src/views/templates/loginFormTemplate.php');
+  include('../src/views/templates/registeredTemplate.php');
+  include('../src/views/templates/registerFormTemplate.php');
+  include('../src/views/templates/allEntriesTemplate.php');
+  include('../src/views/templates/createEntryTemplate.php');
+  include('../src/views/templates/specificEntry.php');
+  include('../src/views/templates/allUsersTemplate.php');
+  include('../src/views/templates/allUsersBtnTemplate.php');
+  include('../src/views/templates/specificComment.php');
+  include('../src/views/templates/toggleTemplate.php');
+  ?>
   <div class="container">
-    
+
     <main>
     </main>
   </div>

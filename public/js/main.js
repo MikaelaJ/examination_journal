@@ -3,8 +3,8 @@ const views = { // Ett objekt
   loggedIn: ['#loggedInTemplate', '#createEntryTemplate', '#allEntriesTemplate', '#allUsersTemplate', '#allUsersBtnTemplate'],
   loginError: ['#loginErrorTemplate'],
   registered: ['#registeredTemplate'],
-  specificEntry:['#specificEntry'],
-  specificComment:['#specificComment']
+  specificEntry: ['#specificEntry'],
+  specificComment: ['#specificComment']
 }
 // Nu behöver man en function som renderar ut dessa vyer
 function renderView(view) {
@@ -30,29 +30,34 @@ function renderView(view) {
 
 let checkedIfLoggedIn = function () {
   return fetch('/api/ping')
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    }
-    else{
-      return;
-    }
-  })
-  .then(loggedIn =>  { 
-    return loggedIn;
-  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      else {
+        return;
+      }
+    })
+    .then(loggedIn => {
+      return loggedIn;
+    })
 }
 
-  checkedIfLoggedIn().then(res => {
+checkedIfLoggedIn().then(res => {
 
-    if (res) {
-      renderView(views.loggedIn);
-      renderEntriesByUser();
-      renderEntries();
+  if (res) {
+    renderView(views.loggedIn);
+    renderEntriesByUser();
+    renderEntries();
 
-    } else {
-      renderView(views.login);
-      renderEntries();
-    }
-  })
+  } else {
+    renderView(views.login);
+    renderEntries();
+  }
+})
 
+//materialize
+/* document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, options);
+}); */
