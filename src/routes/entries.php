@@ -12,8 +12,8 @@ return function ($app) {
     });
 
     // Hämtar de X senaste inläggen av alla användare
-    $app->get('/api/entries/latest', function ($request, $response, $args) {
-        /* $number = $args['nr']; */
+    $app->get('/api/entries/{nr}', function ($request, $response, $args) {
+        $number = $args['nr'];
 
         $entry = new Entry($this->db);
 
@@ -43,13 +43,12 @@ return function ($app) {
         $dataBody = $request->getParsedBody(); // getParsedData() funkar endast på post
         $entry = new Entry($this->db);
         $userID = $_SESSION['userID'];
-        
-        $entry->createEntry($dataBody['title'], $dataBody['content'], $userID );
+
+        $entry->createEntry($dataBody['title'], $dataBody['content'], $userID);
 
         return $response->withJson([
             'success' => true
         ]);
-
     })->add($auth);
 
     // Delete Entry
@@ -64,21 +63,21 @@ return function ($app) {
         } else {
             return $response->withStatus(401);
         }
-    }) ;
+    });
 
     // Update Entry
     $app->post('/api/entry/{id}', function ($request, $response, $args) {
         $entryID = $args['id'];
-        $dataBody = $request->getParsedBody(); 
+        $dataBody = $request->getParsedBody();
         $newEntry = new Entry($this->db);
 
-             if ($newEntry->updateEntry ($entryID, $dataBody['title'], $dataBody['content'])) {
-                return $response->withJson([
-                    'success' => true
-                ]);
-            } else {
-                return $response->withStatus(401);
-            }
+        if ($newEntry->updateEntry($entryID, $dataBody['title'], $dataBody['content'])) {
+            return $response->withJson([
+                'success' => true
+            ]);
+        } else {
+            return $response->withStatus(401);
+        }
     });
 
     // Search function
@@ -88,4 +87,25 @@ return function ($app) {
         $findValue = new Entries($this->db);
         return $response->withJson($findValue->getValueBySearch($searchValue));
     });
-}; 
+
+    // LIKE
+    $app->post('/api/entry/newLike/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
+
+        $newLike = new Entry($this->db);
+        $newLike->updateLike($entryID);
+        return $response->withJson([
+            'success' => true
+        ]);
+    });
+
+    $app->post('/api/entry/showLikes/{id}', function ($request, $response, $args) {
+        $entryID = $args['id'];
+
+        $newLike = new Entry($this->db);
+        $newLike->showLikes($entryID);
+        return $response->withJson([
+            'success' => true
+        ]);
+    });
+};

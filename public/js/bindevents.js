@@ -6,6 +6,9 @@ const bindEvents = () => {
     const allUsersBtn = document.getElementById("allUsersBtn");
     const searchValueForm = document.getElementById('searchValueForm');
 
+    const showTwentyEntriesBtn = document.getElementById("showTwentyEntries");
+    // const likeBtn = document.getElementById("likeBtnForm");
+    const likeBtn = document.querySelector('button').getAttribute('data-entryid')
 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", event => {
@@ -48,3 +51,15 @@ const bindEvents = () => {
         })
         }
 }
+    if (showTwentyEntriesBtn) {
+        showTwentyEntriesBtn.addEventListener('click', event => {
+            showTwentyNextEntries(event);
+        })
+    }
+    if (likeBtn) {
+        likeBtn.addEventListener('submit', event => {
+            console.log(likeBtn);
+            // updateLikes(event);
+        })
+    }
+

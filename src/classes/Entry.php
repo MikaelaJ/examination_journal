@@ -18,9 +18,9 @@ class Entry extends Mapper
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getLatestEntries()
+    public function getLatestEntries($number)
     {
-        $statement = $this->db->prepare("SELECT entries.*, users.username FROM entries INNER JOIN users ON entries.userID = users.userID LIMIT 20");
+    $statement = $this->db->prepare("SELECT entries.*, users.username FROM entries INNER JOIN users ON entries.userID = users.userID LIMIT 20 OFFSET {$number}");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -94,7 +94,26 @@ class Entry extends Mapper
         $statement->execute([
             ':searchValue' => $searchValue
         ]);
+    }
+
+    public function newLike($entryID)
+    {
+        $statement = $this->db->prepare("UPDATE entries SET like_count = COALESCE(like_count, 0) + 1 WHERE entryID = :entryID;");
+        $statement->execute([
+            'entryID' => $entryID
+        ]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function showLikes($entryID)
+    {
+        $statement = $this->db->prepare("SELECT like_count  FROM entries WHERE entryID = :entryID");
+        $statement->execute([
+            'entryID' => $entryID
+        ]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 };
+
+
 

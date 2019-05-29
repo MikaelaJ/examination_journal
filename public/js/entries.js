@@ -1,6 +1,15 @@
+let page = 1;
+let offsetNr = 0;
+
+function showTwentyNextEntries() {
+  page++;
+  offsetNr = (page - 1) * 20;
+  renderEntries();
+}
+
 /* -----------Render All Entries (show on first page and when logged in)------------- */
 function renderEntries() {
-  fetch('/api/entries/latest')
+  fetch(`/api/entries/${offsetNr}`)
     .then(response => {
       return response.json()
     })
@@ -26,6 +35,11 @@ function renderEntriesByUser() {
 
 function getTitle(data, elementId) {
   for (let i = 0; i < data.length; i++) {
+
+    const likeBtn = document.createElement('button');
+    likeBtn.textContent = "Like";
+    likeBtn.dataset.entryid = data[i].entryID;
+
     const createdBySpan = document.createElement('span');
     const span = document.createElement('span');
     const h2 = document.createElement('h2');
@@ -38,6 +52,7 @@ function getTitle(data, elementId) {
     document.getElementById(elementId).append(h2);
     document.getElementById(elementId).append(span);
     document.getElementById(elementId).append(createdBySpan);
+    document.getElementById(elementId).append(likeBtn);
     document.getElementById(elementId).append(hr);
 
 
@@ -122,14 +137,14 @@ function deleteEntry(entryID) {
 
     const formData = new FormData(deleteEntryForm)
     fetch(`/api/entry/${entryID}`, {
-      method: 'DELETE',
-      body: formData
-    }).then(response => {
-      return response.json()
-    })
-    .then(res => {
-      location.reload();
-    })
+        method: 'DELETE',
+        body: formData
+      }).then(response => {
+        return response.json()
+      })
+      .then(res => {
+        location.reload();
+      })
       .catch(error => {
         console.error(error);
       })
