@@ -4,6 +4,7 @@ let offsetNr = 0;
 function showTwentyNextEntries() {
   page++;
   offsetNr = (page - 1) * 20;
+  console.log(offsetNr);
   renderEntries();
 }
 
@@ -137,11 +138,11 @@ function deleteEntry(entryID) {
 
     const formData = new FormData(deleteEntryForm)
     fetch(`/api/entry/${entryID}`, {
-        method: 'DELETE',
-        body: formData
-      }).then(response => {
-        return response.json()
-      })
+      method: 'DELETE',
+      body: formData
+    }).then(response => {
+      return response.json()
+    })
       .then(res => {
         location.reload();
       })
@@ -155,27 +156,26 @@ function deleteEntry(entryID) {
 
 function apiSearch(event) {
   event.preventDefault();
- console.log("inne i apiSearch");
- const formData = new FormData(searchValueForm)
+  const formData = new FormData(searchValueForm);
   let value = formData.get("searchString");
-    fetch(`/api/entry/search/${value}`, {
-      method: 'POST'
-      /* body: formData */
-    }).then(response => {
-      return response.json()
-    })
-      .then(value => {
-        search(value);
-      })
-      .catch(error => {
-        console.error(error);
-      })
-  }
+  console.log(value);
 
-
-function search(data){
-  data.forEach(data => {
-    console.log(data)
-    
-  });
-}
+        fetch(`/api/entry/search/${value}`, {
+          method: 'GET',
+        }).then(response => {
+          if (!response.ok) {
+            console.log("Oooops nu blev det fel");
+            return Error(response.statusText);
+          } else {
+            console.log(response.ok);
+            return response.json();
+          }
+        })
+          .then(value => {
+            console.log(value);
+            /* search(value); */
+          })
+          .catch(error => {
+            console.error(error);
+          })
+        }

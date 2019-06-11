@@ -81,11 +81,11 @@ return function ($app) {
     });
 
     // Search function
-    $app->post('/api/entry/search/{value}', function ($request, $response, $args) {
+    $app->get('/api/entry/search/{value}', function ($request, $response, $args) {
         $searchValue = $args['value'];
         // $nameLike +="%";
         $findValue = new Entries($this->db);
-        return $response->withJson($findValue->getValueBySearch($searchValue));
+        return $response->withJson($findValue->searchEntries($searchValue));
     });
 
     // LIKE

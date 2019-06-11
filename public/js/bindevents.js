@@ -8,7 +8,7 @@ const bindEvents = () => {
 
     const showTwentyEntriesBtn = document.getElementById("showTwentyEntries");
     // const likeBtn = document.getElementById("likeBtnForm");
-    const likeBtn = document.querySelector('button').getAttribute('data-entryid')
+    const likeBtn = document.querySelector('button').getAttribute('data-entryid');
 
     if (logoutBtn) {
         logoutBtn.addEventListener("click", event => {
@@ -50,7 +50,7 @@ const bindEvents = () => {
             apiSearch(event);
         })
         }
-}
+
     if (showTwentyEntriesBtn) {
         showTwentyEntriesBtn.addEventListener('click', event => {
             showTwentyNextEntries(event);
@@ -62,4 +62,4 @@ const bindEvents = () => {
             // updateLikes(event);
         })
     }
-
+}

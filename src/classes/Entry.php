@@ -87,9 +87,9 @@ class Entry extends Mapper
          }
     }
 
-    public function getValueBySearch($searchValue)
+    public function searchEntries($searchValue)
     {
-        $query = "SELECT * FROM entries WHERE title LIKE :searchValue ORDER BY createdAt DESC";
+        $query = "SELECT * FROM entries WHERE title LIKE '%' , $searchValue , '%' ORDER BY createdAt DESC";
         $statement = $this->db->prepare($query);
         $statement->execute([
             ':searchValue' => $searchValue
@@ -113,6 +113,7 @@ class Entry extends Mapper
         ]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
 };
 
 
