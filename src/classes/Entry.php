@@ -89,11 +89,13 @@ class Entry extends Mapper
 
     public function searchEntries($searchValue)
     {
-        $query = "SELECT * FROM entries WHERE title LIKE '%' , $searchValue , '%' ORDER BY createdAt DESC";
-        $statement = $this->db->prepare($query);
+        $searchValue = '%' . $searchValue . '%';
+        $statement = $this->db->prepare("SELECT * FROM entries WHERE title LIKE :searchValue ORDER BY createdAt DESC");
+        $statement->bindparam(':searchValue', $searchValue, PDO::PARAM_STR);
         $statement->execute([
             ':searchValue' => $searchValue
         ]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function newLike($entryID)

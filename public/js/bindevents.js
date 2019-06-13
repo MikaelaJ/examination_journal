@@ -49,7 +49,7 @@ const bindEvents = () => {
         searchValueForm.addEventListener('submit', event => {
             apiSearch(event);
         })
-        }
+    }
 
     if (showTwentyEntriesBtn) {
         showTwentyEntriesBtn.addEventListener('click', event => {

@@ -161,7 +161,7 @@ function apiSearch(event) {
   console.log(value);
 
         fetch(`/api/entry/search/${value}`, {
-          method: 'GET',
+          /* method: 'GET', */
         }).then(response => {
           if (!response.ok) {
             console.log("Oooops nu blev det fel");
