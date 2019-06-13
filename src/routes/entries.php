@@ -83,8 +83,7 @@ return function ($app) {
     // Search function
     $app->get('/api/entry/search/{value}', function ($request, $response, $args) {
         $searchValue = $args['value'];
-        // $nameLike +="%";
-        $findValue = new Entries($this->db);
+        $findValue = new Entry($this->db);
         return $response->withJson($findValue->searchEntries($searchValue));
     });
 
